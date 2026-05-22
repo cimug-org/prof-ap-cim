@@ -13,9 +13,10 @@
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix role: <http://www.w3.org/ns/dx/prof/role/> .
 
-<https://cim.ucaiug.io/dxprof-ap-cim/1.0#> a owl:Ontology ;
-    dcat:isVersionOf <https://cim.ucaiug.io/dxprof-ap-cim#> ;
+<https://prof-ap-cim.ucaiug.io/1.0#> a owl:Ontology ;
+    dcat:isVersionOf <https://prof-ap-cim.ucaiug.io#> ;
     rdfs:label "DXPROF-AP-CIM" ;
+    dcterms:description Application profile of "The Profiles Vocabulary" (PROF) for describing CIM profiles
     dcterms:conformsTo <https://www.w3.org/TR/dx-prof/> ;
     dcterms:title "DX Profile Application Profile: CIM" .
 
@@ -80,6 +81,7 @@ prof:Profile a sh:NodeShape , rdfs:Class ;
     ] ,
     [
         sh:path dcterms:language ;
+        sh:maxCount 1
     ] ,
     [
         sh:path dcterms:license ;

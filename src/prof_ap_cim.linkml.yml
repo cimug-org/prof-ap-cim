@@ -1,0 +1,224 @@
+id: https://prof-ap-cim.ucaiug.io/1.0#
+instantiates: https://prof-ap-cim.ucaiug.io#
+name: PROF-AP-CIM
+title: PROF-AP-CIM
+version: 1.0
+conforms_to: http://www.w3.org/ns/dx/prof
+description: Application profile of "The Profiles Vocabulary" (PROF) for describing CIM profiles.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sh: http://www.w3.org/ns/shacl#
+  adms: http://www.w3.org/ns/adms#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dc: http://purl.org/dc/elements/1.1/
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  cim: https://cim.ucaiug.io/ns#
+  cims: https://cim.ucaiug.io/schema-extensions#
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
+imports:
+  - linkml:types
+classes:
+  Profile:
+    description: | 
+      A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications. This definition includes what are sometimes called "application profiles", "metadata application profiles", or "metadata profiles".
+    class_uri: prof:Profile
+    attributes:
+      version:
+        slot_uri: dcat:version
+        range: string
+        required: true
+        multivalued: false
+        description: The version indicator (name or identifier) of a resource.
+      title:
+        slot_uri: dcterms:title
+        range: string
+        required: true
+        multivalued: false
+        description: A name given to the resource.
+      is_version_of:
+        slot_uri: dcat:isVersionOf
+        range: uriorcurie
+        required: true
+        multivalued: false
+        description: A related resource of which the described resource is a version, edition, or adaptation.
+      previous_version:
+        slot_uri: dcat:previousVersion
+        range: uriorcurie
+        required: false
+        multivalued: true
+        description: The previous version of a resource in a lineage.
+      issued:
+        slot_uri: dcterms:issued
+        range: datetime
+        required: true
+        multivalued: false
+        description: Date of formal issuance of the resource.
+      conforms_to:
+        slot_uri: dcterms:conformsTo
+        range: uriorcurie
+        required: true
+        multivalued: true
+        description: An established standard to which the described resource conforms.
+      source:
+        slot_uri: dcterms:source
+        range: string
+        required: false
+        multivalued: true
+        description: A related resource from which the described resource is derived.
+      contributor:
+        slot_uri: dcterms:contributor
+        range: uriorcurie
+        required: true
+        multivalued: true
+        description: An entity responsible for making contributions to the resource.
+      creator:
+        slot_uri: dcterms:contributor
+        range: uriorcurie
+        required: true
+        multivalued: true
+        description: An entity primarily responsible for making the resource.
+      description:
+        slot_uri: dcterms:contributor
+        range: string
+        required: true
+        multivalued: false
+        description: An account of the resource.
+      comment:
+        slot_uri: rdfs:comment
+        range: string
+        required: false
+        multivalued: true
+        description: A description of the subject resource.
+      label:
+        slot_uri: rdfs:label
+        range: string
+        required: true
+        multivalued: false
+        description: A human-readable name for the subject.
+      language:
+        slot_uri: dcterms:language
+        range: string
+        required: false
+        multivalued: false
+        description: A language of the resource.
+      license:
+        slot_uri: dcterms:license
+        range: string
+        required: false
+        multivalued: false
+        description: A legal document giving official permission to do something with the resource.
+      publisher:
+        slot_uri: dcterms:publisher
+        range: string
+        required: true
+        multivalued: false
+        description: An entity responsible for making the resource available.
+      rights_holder:
+        slot_uri: dcterms:rightsHolder
+        range: string
+        required: false
+        multivalued: false
+        description: A person or organization owning or managing rights over the resource.
+      rights:
+        slot_uri: dcterms:rights
+        range: string
+        required: false
+        multivalued: false
+        description: Information about rights held in and over the resource.
+      resource:
+        slot_uri: prof:hasResource
+        range: ProfileResource
+        required: false
+        multivalued: true
+        description: A resource which describes the nature of an artifact and the role it plays in relation to the profile.
+  ProfileResource:
+    class_uri: prof:ResourceDescriptor
+    attributes:
+      label:
+        slot_uri: rdfs:label
+        range: string
+        required: true
+        multivalued: false
+        description: A human-readable name for the subject.
+      title:
+        slot_uri: dcterms:title
+        range: string
+        required: true
+        multivalued: false
+        description: A name given to the resource.
+      conforms_to:
+        slot_uri: dcterms:conformsTo
+        range: uriorcurie
+        required: true
+        multivalued: true
+        description: An established standard to which the described resource conforms.
+      source:
+        slot_uri: dcterms:source
+        range: string
+        required: false
+        multivalued: true
+        description: A related resource from which the described resource is derived.
+      description:
+        slot_uri: dcterms:contributor
+        range: string
+        required: true
+        multivalued: false
+        description: An account of the resource.
+      representation_technique:
+        slot_uri: adms:representationTechnique
+        range: RepresentationTechnique
+        required: false
+        multivalued: false
+        description: More information about the format in which an asset distribution is released. This is different from the file format as, for example, a ZIP file (file format) could contain an XML schema (representation technique).
+      format:
+        slot_uri: dcterms:format
+        range: RepresentationFormat
+        required: true
+        multivalued: false
+        description: The file format, physical medium, or dimensions of the resource.
+      artifact:
+        slot_uri: prof:hasArtifact
+        range: uriorcurie
+        required: true
+        multivalued: false
+        description: The URL of a downloadable file with particulars such as its format and role indicated by the resource descriptor.
+      role:
+        slot_uri: prof:hasRole
+        range: ProfileResourceRole
+        required: true
+        multivalued: false
+        description: A description of a resource that defines an aspect - a particular part, feature or role - of a profile.
+enums:
+  RepresentationTechnique:
+    permissible_values:
+      LINKML:
+        meaning: cims:linkml
+        description: The LinkML data modeling language.
+      SHACL:
+        meaning: cims:shacl
+        description: W3C Shapes Constraints Language.
+  RepresentationFormat:
+    permissible_values:
+      YAML:
+        meaning: cims:yaml
+        description: Yet Another Markup Language.
+      TURTLE:
+        meaning: cims:turtle
+        description: RDF Turtle.
+  ProfileResourceRole:
+    permissible_values:
+      CONSTRAINTS:
+        meaning: role:constraints
+        description: Descriptions of obligations, limitations or extensions that the profile defines.
+      VOCABULARY:
+        meaning: role:vocabulary
+        description: Defines terms used in the profile specification.
+      SPECIFICATION:
+        meaning: role:specification
+        description: Defining the profile in human-readable form.
