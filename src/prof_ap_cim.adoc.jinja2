@@ -26,6 +26,9 @@
 :source-highlighter: highlight.js
 :stylesheet: cimug.style.css
 
+{#[#logo]
+image::https://avatars.githubusercontent.com/u/63329979?s=200&v=4[]#}
+
 {% if description -%}
 {{ description }}
 {%- endif %}
@@ -45,28 +48,35 @@ Artifacts:: link:./prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | lin
 == Abstract
 #TODO#.#}
 
+[#introduction]
 == Introduction
 
 This is an application profile of PROF for defining CIM profiles.
 
+[#status]
 == Status
 #TODO#.
 
+[#license]
 == License
 #TODO#.
 
+[#conformance]
 == Conformance
 #TODO#.
 
+[#terminology]
 == Terminology
 #TODO#.
 
+[#schema]
 == Schema
 
 .Schema
 image::prof_ap_cim.uml.svg[align=center]
 
 {% for class_name, class_ in classes.items() -%}
+[#class_{{ class_name }}.class]
 === Class: {{ class_name }}
 [horizontal]
 URI:: {{ link_curie(class_.class_uri) }}
@@ -95,6 +105,7 @@ a|
 {% endfor %}
 
 {% for enum_name, enum in enums.items() -%}
+[#enum_{{ enum_name.lower() }}.enum]
 === Enumeration: {{ enum_name }}
 [horizontal]
 URI:: {{ link_curie(enum.enum_uri) }}
@@ -118,9 +129,8 @@ URI:: {{ link_curie(enum.enum_uri) }}
 
 {% endfor %}
 
-
-[nonum]
-== Appendix A: Diagram Layout profile example
+[appendix,nonum]
+== Diagram Layout Profile Example
 
 Any RDF serialization will do for profile instances, but it is recommended to make us of the link:./prof_ap_cim.context.jsonld[JSON-LD context,window=read-later]
 and write using YAML.
@@ -148,5 +158,5 @@ include::src/examples/diagram_layout_ap.jsonld[]
 ----
 ====
 
-[nonum]
-== Appendix B: Validating profiles
+[appendix,nonum]
+== Validating profiles
