@@ -103,7 +103,7 @@ URI:: {{ link_curie(enum.enum_uri) }}
 
 {% for pv_name, pv in enum.permissible_values.items() -%}
 {% if loop.first %}
-.{{ enum_name }} properties
+.{{ enum_name }} permitted values
 [cols="1,3"]
 |===
 | Value | Description
