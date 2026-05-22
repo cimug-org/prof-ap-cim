@@ -24,6 +24,7 @@
 :toc: left
 :sectnums:
 :source-highlighter: highlight.js
+:stylesheet: cimug.style.css
 
 {% if description -%}
 {{ description }}
@@ -63,7 +64,7 @@ This is an application profile of PROF for defining CIM profiles.
 == Schema
 
 .Schema
-image::prof_ap_cim.uml.svg[]
+image::prof_ap_cim.uml.svg[align=center]
 
 {% for class_name, class_ in classes.items() -%}
 === Class: {{ class_name }}
@@ -74,7 +75,7 @@ URI:: {{ link_curie(class_.class_uri) }}
 
 {% for attr_name, attr_ in class_.attributes.items() -%}
 {% if loop.first %}
-.Profile properties
+.{{ class_name }} properties
 [cols="1,1,3"]
 |===
 | Property | Type | Description
@@ -93,6 +94,30 @@ a|
 
 {% endfor %}
 
+{% for enum_name, enum in enums.items() -%}
+=== Enumeration: {{ enum_name }}
+[horizontal]
+URI:: {{ link_curie(enum.enum_uri) }}
+
+{% if enum.description %}{{ enum.description }}{% endif %}
+
+{% for pv_name, pv in enum.permissible_values.items() -%}
+{% if loop.first %}
+.{{ enum_name }} properties
+[cols="1,3"]
+|===
+| Value | Description
+
+{% endif %}
+| {{ curietouri(pv.meaning) }}[`{{ pv_name }}`, title={{pv.meaning}}]
+| {{ pv.description }}
+{% if loop.last %}
+|===
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
 
 [nonum]
 == Appendix A: Diagram Layout profile example
@@ -100,21 +125,28 @@ a|
 Any RDF serialization will do for profile instances, but it is recommended to make us of the link:./prof_ap_cim.context.jsonld[JSON-LD context,window=read-later]
 and write using YAML.
 
+._Diagram Layout_ profile (YAML source code)
+[%collapsible]
+====
 [source,yaml]
 ----
 include::src/examples/diagram_layout_ap.yml[]
 ----
+====
 
 Note how the user does not need to write any URIs or CURIEs by hand. Moreover, all the `@` characters which indicate special JSON-LD syntax have been aliased
 such that the user won't be confused by them.
 
-This YAML can trivially be converted to JSON, rendering a valid JSON-LD serialization of the profile instance:
+This YAML can trivially, automatically be converted to JSON, rendering a valid JSON-LD serialization of the profile instance:
 
+._Diagram Layout_ profile (JSON-LD source code)
+[%collapsible]
+====
 [source,json]
 ----
 include::src/examples/diagram_layout_ap.jsonld[]
 ----
+====
 
 [nonum]
 == Appendix B: Validating profiles
-

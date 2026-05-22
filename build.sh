@@ -2,7 +2,7 @@
 
 jinja2 src/prof_ap_cim.adoc.jinja2 src/prof_ap_cim.linkml.yml \
     | tee docs/index.adoc \
-    | asciidoctor -o docs/index.html -r rouge -
+    | asciidoctor -a stylesheet=src/cimug.style.css -o docs/index.html -r rouge -
 
 cp \
     src/prof_ap_cim.linkml.yml \
