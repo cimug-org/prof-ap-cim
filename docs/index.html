@@ -433,6 +433,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -451,8 +452,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_class_profileresource">6.2. Class: ProfileResource</a></li>
 </ul>
 </li>
-<li><a href="#_appendix_a_example">7. Appendix A: Example</a></li>
-<li><a href="#_appendix_b_validating_profiles">8. Appendix B: Validating profiles</a></li>
+<li><a href="#_appendix_a_diagram_layout_profile_example">Appendix A: Diagram Layout profile example</a></li>
+<li><a href="#_appendix_b_validating_profiles">Appendix B: Validating profiles</a></li>
 </ul>
 </div>
 </div>
@@ -479,9 +480,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <dd>
 <p><a href="https://prof-ap-cim.ucaiug.io#">https://prof-ap-cim.ucaiug.io#</a></p>
 </dd>
+<dt class="hdlist1">Conforms to</dt>
+<dd>
+<p><a href="https://www.w3.org/TR/dx-prof/" class="bare">https://www.w3.org/TR/dx-prof/</a></p>
+</dd>
 <dt class="hdlist1">Artifacts</dt>
 <dd>
-<p><a href="./prof_ap_cim.shacl.ttl" target="read-later">SHACL (Turtle)</a> | <a href="./prof_ap_cim.linkml.yml" target="read-later">LinkML (YAML)</a></p>
+<p><a href="./prof_ap_cim.shacl.ttl" target="read-later">SHACL (Turtle)</a> | <a href="./prof_ap_cim.linkml.yml" target="read-later">LinkML (YAML)</a> | <a href="./prof_ap_cim.context.jsonld" target="read-later">JSON-LD context (JSON-LD)</a></p>
 </dd>
 </dl>
 </div>
@@ -986,15 +991,262 @@ URI
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_a_example">7. Appendix A: Example</h2>
+<h2 id="_appendix_a_diagram_layout_profile_example">Appendix A: Diagram Layout profile example</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CIM4Diagram example in YAML (JSON-LD).</p>
+<p>Any RDF serialization will do for profile instances, but it is recommended to make us of the <a href="./prof_ap_cim.context.jsonld" target="read-later">JSON-LD context</a>
+and write using YAML.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">"@context": https://cim.ucaiug.io/dxprof-ap-cim/1.0/context.jsonld
+id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
+type: prof:Profile
+version: "2.1"
+title: DiagramLayout-AP-v2-1
+isVersionOf: https://cim.ucaiug.io/grid/DiagramLayout
+priorVersion: https://cim.ucaiug.io/grid/DiagramLayout/2.0
+issued: '2025-03-06T17:59:40+01:00'
+conformsTo: https://cim.ucaiug.io/dxprof-ap-cim/1.0
+source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+contributor:
+  - orcid:0000-0002-7167-7321
+  - orcid:0000-0001-7508-7428
+creator: orcid:0009-0009-8211-926X
+description: Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout.
+comment: Diagram Layout application profile defined by DX-PROF
+label: Diagram Layout Application Profile 2.1
+language: en-GB
+license: http://www.apache.org/licenses/LICENSE-2.0
+publisher: https://www.ucaiug.org/
+rightsHolder: UCA International User Group
+rights: Copyright
+resource:
+  - id: https://cim.ucaiug.io/dcatcim/1.0#Vocabulary
+    type: prof:ResourceDescriptor
+    label: DCAT-CIM Constraints
+    title: DCAT-CIM-Cons-v1-0-0
+    description: Constraints for the Data Catalog Vocabulary (DCAT) with CIM extension profile described in SHACL.
+    representationTechnique: https://cim.ucaiug.io/codelist/representation-technique#rdfs
+    conformsTo: https://cim.ucaiug.io/prof/Constraints/1.0
+    format: https://www.iana.org/assignments/media-types/text/turtle
+    hasArtifact: https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl
+    hasRole: role:constraints
+  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary
+    label: Diagram Layout Vocabulary
+    title: DiagramLayout-Voc-v2-1-0
+    description: Vocabulary for the Diagram Layout profile described in RDFS-Plus.
+    conformsTo: https://cim.ucaiug.io/prof/Vocabulary/1.0
+    representationTechnique: https://cim.ucaiug.io/codelist/representation-technique#rdfs
+    format: https://www.iana.org/assignments/media-types/text/turtle
+    source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
+    hasRole: role:vocabulary
+  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints
+    label: Diagram Layout Constraints
+    title: DiagramLayout-Cons-v2-1-0
+    description: Constraints for the Diagram Layout profile described in SHACL.
+    conformsTo: https://cim.ucaiug.io/prof/Constraints/1.0
+    representationTechnique: https://cim.ucaiug.io/codelist/representation-technique#shacl
+    format: https://www.iana.org/assignments/media-types/text/turtle
+    source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
+    hasRole: role:constraints
+  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification
+    label: Diagram Layout Specification
+    description: Document describing the human readable specification of the Diagram Layout application profile.
+    format: https://www.iana.org/assignments/media-types/application/pdf
+    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf
+    hasRole: role:specification</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note how the user does not need to write any URIs or CURIEs by hand. Moreover, all the <code>@</code> characters which indicate special JSON-LD syntax have been aliased
+such that the user won&#8217;t be confused by them.</p>
+</div>
+<div class="paragraph">
+<p>This YAML can trivially be converted to JSON, rendering a valid JSON-LD serialization of the profile instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "@context": {
+    "@base": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#",
+    "id": "@id",
+    "adms": "http://www.w3.org/ns/adms#",
+    "type": "@type",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "cim": "https://cim.ucaiug.io/ns#",
+    "cims": "https://cim.ucaiug.io/schema-extensions#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "role": "http://www.w3.org/ns/dx/prof/role/",
+    "@vocab": "http://cim.ucaiug.io/grid/DiagramLayout",
+    "version": {
+      "@id": "dcat:version",
+      "@type": "xsd:string"
+    },
+    "isVersionOf": {
+      "@id": "dcat:isVersionOf",
+      "@type": "@id"
+    },
+    "priorVersion": {
+      "@id": "dcat:priorVersion",
+      "@type": "@id"
+    },
+    "issued": {
+      "@id": "dcterms:issued",
+      "@type": "xsd:dateTime"
+    },
+    "conformsTo": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id"
+    },
+    "source": {
+      "@id": "dcterms:source"
+    },
+    "contributor": {
+      "@id": "dcterms:contributor",
+      "@type": "@id"
+    },
+    "creator": {
+      "@id": "dcterms:creator",
+      "@type": "@id"
+    },
+    "description": {
+      "@id": "dcterms:description"
+    },
+    "title": {
+      "@id": "dcterms:title"
+    },
+    "comment": {
+      "@id": "rdfs:comment"
+    },
+    "label": {
+      "@id": "rdfs:label"
+    },
+    "language": {
+      "@id": "dcterms:language"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "publisher": {
+      "@id": "dcterms:publisher",
+      "@type": "@id"
+    },
+    "rightsHolder": {
+      "@id": "dcterms:rightsHolder"
+    },
+    "rights": {
+      "@id": "dcterms:rights"
+    },
+    "resource": {
+      "@id": "prof:hasResource"
+    },
+    "representationTechnique": {
+      "@id": "adms:representationTechnique",
+      "@type": "@id"
+    },
+    "format": {
+      "@id": "dcterms:format",
+      "@type": "@id"
+    },
+    "hasArtifact": {
+      "@id": "prof:hasArtifact",
+      "@type": "@id"
+    },
+    "hasRole": {
+      "@id": "prof:hasRole",
+      "@type": "@id"
+    },
+    "orcid": {
+      "@id": "https://orcid.org/",
+      "@type": "@id"
+    }
+  },
+  "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1",
+  "type": "prof:Profile",
+  "version": "2.1",
+  "title": "DiagramLayout-AP-v2-1",
+  "isVersionOf": "https://cim.ucaiug.io/grid/DiagramLayout",
+  "priorVersion": "https://cim.ucaiug.io/grid/DiagramLayout/2.0",
+  "issued": "2025-03-06T17:59:40+01:00",
+  "conformsTo": "https://cim.ucaiug.io/dxprof-ap-cim/1.0",
+  "source": "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+  "contributor": [
+    "orcid:0000-0002-7167-7321",
+    "orcid:0000-0001-7508-7428"
+  ],
+  "creator": "orcid:0009-0009-8211-926X",
+  "description": "Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout.",
+  "comment": "Diagram Layout application profile defined by DX-PROF",
+  "label": "Diagram Layout Application Profile 2.1",
+  "language": "en-GB",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "publisher": "https://www.ucaiug.org/",
+  "rightsHolder": "UCA International User Group",
+  "rights": "Copyright",
+  "resource": [
+    {
+      "id": "https://cim.ucaiug.io/dcatcim/1.0#Vocabulary",
+      "type": "prof:ResourceDescriptor",
+      "label": "DCAT-CIM Constraints",
+      "title": "DCAT-CIM-Cons-v1-0-0",
+      "description": "Constraints for the Data Catalog Vocabulary (DCAT) with CIM extension profile described in SHACL.",
+      "representationTechnique": "https://cim.ucaiug.io/codelist/representation-technique#rdfs",
+      "conformsTo": "https://cim.ucaiug.io/prof/Constraints/1.0",
+      "format": "https://www.iana.org/assignments/media-types/text/turtle",
+      "hasArtifact": "https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl",
+      "hasRole": "role:constraints"
+    },
+    {
+      "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary",
+      "label": "Diagram Layout Vocabulary",
+      "title": "DiagramLayout-Voc-v2-1-0",
+      "description": "Vocabulary for the Diagram Layout profile described in RDFS-Plus.",
+      "conformsTo": "https://cim.ucaiug.io/prof/Vocabulary/1.0",
+      "representationTechnique": "https://cim.ucaiug.io/codelist/representation-technique#rdfs",
+      "format": "https://www.iana.org/assignments/media-types/text/turtle",
+      "source": "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+      "hasArtifact": "https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl",
+      "hasRole": "role:vocabulary"
+    },
+    {
+      "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints",
+      "label": "Diagram Layout Constraints",
+      "title": "DiagramLayout-Cons-v2-1-0",
+      "description": "Constraints for the Diagram Layout profile described in SHACL.",
+      "conformsTo": "https://cim.ucaiug.io/prof/Constraints/1.0",
+      "representationTechnique": "https://cim.ucaiug.io/codelist/representation-technique#shacl",
+      "format": "https://www.iana.org/assignments/media-types/text/turtle",
+      "source": "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+      "hasArtifact": "https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl",
+      "hasRole": "role:constraints"
+    },
+    {
+      "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification",
+      "label": "Diagram-Layout-Specification-v2-1-0",
+      "description": "Document describing the human readable specification of the Diagram Layout application profile.",
+      "format": "https://www.iana.org/assignments/media-types/application/pdf",
+      "hasArtifact": "https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf",
+      "hasRole": "role:specification"
+    }
+  ]
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_b_validating_profiles">8. Appendix B: Validating profiles</h2>
+<h2 id="_appendix_b_validating_profiles">Appendix B: Validating profiles</h2>
 <div class="sectionbody">
 
 </div>
@@ -1002,8 +1254,15 @@ URI
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-05-22 14:53:18 +0200
+Last updated 2026-05-22 15:48:21 +0200
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 </body>
 </html>

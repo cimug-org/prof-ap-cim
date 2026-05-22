@@ -1,4 +1,4 @@
-'@context': https://cim.ucaiug.io/dxprof-ap-cim/1.0/context.jsonld  # NOTE: Currently injected loocally by script.
+"@context": https://cim.ucaiug.io/dxprof-ap-cim/1.0/context.jsonld
 id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
 type: prof:Profile
 version: "2.1"
@@ -53,7 +53,6 @@ resource:
     hasRole: role:constraints
   - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification
     label: Diagram Layout Specification
-    label: Diagram-Layout-Specification-v2-1-0
     description: Document describing the human readable specification of the Diagram Layout application profile.
     format: https://www.iana.org/assignments/media-types/application/pdf
     hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf
