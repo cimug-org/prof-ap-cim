@@ -1,0 +1,27 @@
+site:
+  title: PROF-AP-CIM
+  url: https://www.ucaiug.io/prof-ap-cim
+content:
+  sources:
+    - url: ''
+      branches: HEAD
+      start_path: _docs
+asciidoc:
+  attributes:
+    page-pagination: ''
+    experimental: ''
+    kroki-fetch-diagram: true
+    kroki-default-format: svg@
+    kroki-server-url: http://fruit.ritger.nl:9000
+  # extensions:
+  #   - asciidoctor-kroki
+output:
+  clean: true
+  dir: docs
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+  supplemental_files: ./supplemental-ui
+# antora:
+#   extensions:
+#     - require: '@antora/lunr-extension'

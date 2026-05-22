@@ -21,9 +21,7 @@
 {%- endmacro %}
 
 = {% if title %}{{ title }}{% else %}{{ name }}{% endif %}
-:toc: left
 :sectnums:
-:source-highlighter: highlight.js
 
 {% if description -%}
 {{ description }}
@@ -102,7 +100,7 @@ and write using YAML.
 
 [source,yaml]
 ----
-include::src/examples/diagram_layout_ap.yml[]
+include::example$diagram_layout_ap.yml[]
 ----
 
 Note how the user does not need to write any URIs or CURIEs by hand. Moreover, all the `@` characters which indicate special JSON-LD syntax have been aliased
@@ -112,7 +110,7 @@ This YAML can trivially be converted to JSON, rendering a valid JSON-LD serializ
 
 [source,json]
 ----
-include::src/examples/diagram_layout_ap.jsonld[]
+include::example$diagram_layout_ap.jsonld[]
 ----
 
 [nonum]

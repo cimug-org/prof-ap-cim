@@ -2,7 +2,7 @@ id: https://prof-ap-cim.ucaiug.io/1.0#
 instantiates: https://prof-ap-cim.ucaiug.io#
 name: PROF-AP-CIM
 title: PROF-AP-CIM
-version: 1.0
+version: '1.0'
 conforms_to: https://www.w3.org/TR/dx-prof/
 description: Application profile of "The Profiles Vocabulary" (PROF) for describing CIM profiles.
 prefixes:
