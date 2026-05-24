@@ -43,20 +43,47 @@ This is an application profile of PROF for defining CIM profiles.
 .Schema
 [d2]
 ----
-profile: "Profile <<prof:Profile>>" {
+direction: down
+
+Profile: "Profile <<prof:Profile>>" {
   shape: sql_table
-  id: int (1) {constraint: '[dct:identifier]'}
-  id: int (1) {constraint: dct:identifier}
-  monster: int
-  last_updated: timestamp
+  "version": dcat:version {constraint: string (1)}
+  "title": dcterms:title {constraint: string (1)}
+  "is_version_of": dcat:isVersionOf {constraint: uriorcurie (1)}
+  "previous_version": dcat:previousVersion {constraint: uriorcurie (0..*)}
+  "issued": dcterms:issued {constraint: datetime (1)}
+  "conforms_to": dcterms:conformsTo {constraint: uriorcurie (1..*)}
+  "source": dcterms:source {constraint: string (0..*)}
+  "contributor": dcterms:contributor {constraint: uriorcurie (1..*)}
+  "creator": dcterms:contributor {constraint: uriorcurie (1..*)}
+  "description": dcterms:contributor {constraint: string (1)}
+  "comment": rdfs:comment {constraint: string (0..*)}
+  "label": rdfs:label {constraint: string (1)}
+  "language": dcterms:language {constraint: string (0..1)}
+  "license": dcterms:license {constraint: string (0..1)}
+  "publisher": dcterms:publisher {constraint: string (1)}
+  "rights_holder": dcterms:rightsHolder {constraint: string (0..1)}
+  "rights": dcterms:rights {constraint: string (0..1)}
+  
+}
+"Profile" -> "ProfileResource": resource
+
+
+ProfileResource: "ProfileResource <<prof:ResourceDescriptor>>" {
+  shape: sql_table
+  "label": rdfs:label {constraint: string (1)}
+  "title": dcterms:title {constraint: string (1)}
+  "conforms_to": dcterms:conformsTo {constraint: uriorcurie (1..*)}
+  "source": dcterms:source {constraint: string (0..*)}
+  "description": dcterms:contributor {constraint: string (1)}
+  "representation_technique": adms:representationTechnique {constraint: RepresentationTechnique (0..1)}
+  "format": dcterms:format {constraint: RepresentationFormat (1)}
+  "artifact": prof:hasArtifact {constraint: uriorcurie (1)}
+  "role": prof:hasRole {constraint: ProfileResourceRole (1)}
+  
 }
 
-resource: "ProfileResource <<prof:ResourceDescriptor>>" {
-  shape: sql_table
-  id: int {constraint: "@id"}
-}
 
-profile.monster -> resource.id: "resource (0..*) \n<<prof:hasResource>>"
 ----
 
 
@@ -79,7 +106,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | The version indicator (name or identifier) of a resource.
 
 
@@ -88,7 +114,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | A name given to the resource.
 
 
@@ -97,7 +122,6 @@ a|
 [unstyled]
 * `uriorcurie`
 * (1)
-    
 | A related resource of which the described resource is a version, edition, or adaptation.
 
 
@@ -106,7 +130,6 @@ a|
 [unstyled]
 * `uriorcurie`
 * (0..*)
-    
 | The previous version of a resource in a lineage.
 
 
@@ -115,7 +138,6 @@ a|
 [unstyled]
 * `datetime`
 * (1)
-    
 | Date of formal issuance of the resource.
 
 
@@ -124,7 +146,6 @@ a|
 [unstyled]
 * `uriorcurie`
 * (1..*)
-    
 | An established standard to which the described resource conforms.
 
 
@@ -133,7 +154,6 @@ a|
 [unstyled]
 * `string`
 * (0..*)
-    
 | A related resource from which the described resource is derived.
 
 
@@ -142,7 +162,6 @@ a|
 [unstyled]
 * `uriorcurie`
 * (1..*)
-    
 | An entity responsible for making contributions to the resource.
 
 
@@ -151,7 +170,6 @@ a|
 [unstyled]
 * `uriorcurie`
 * (1..*)
-    
 | An entity primarily responsible for making the resource.
 
 
@@ -160,7 +178,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | An account of the resource.
 
 
@@ -169,7 +186,6 @@ a|
 [unstyled]
 * `string`
 * (0..*)
-    
 | A description of the subject resource.
 
 
@@ -178,7 +194,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | A human-readable name for the subject.
 
 
@@ -187,7 +202,6 @@ a|
 [unstyled]
 * `string`
 * (0..1)
-    
 | A language of the resource.
 
 
@@ -196,7 +210,6 @@ a|
 [unstyled]
 * `string`
 * (0..1)
-    
 | A legal document giving official permission to do something with the resource.
 
 
@@ -205,7 +218,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | An entity responsible for making the resource available.
 
 
@@ -214,7 +226,6 @@ a|
 [unstyled]
 * `string`
 * (0..1)
-    
 | A person or organization owning or managing rights over the resource.
 
 
@@ -223,7 +234,6 @@ a|
 [unstyled]
 * `string`
 * (0..1)
-    
 | Information about rights held in and over the resource.
 
 
@@ -232,7 +242,6 @@ a|
 [unstyled]
 * `ProfileResource`
 * (0..*)
-    
 | A resource which describes the nature of an artifact and the role it plays in relation to the profile.
 
 |===
@@ -257,7 +266,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | A human-readable name for the subject.
 
 
@@ -266,7 +274,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | A name given to the resource.
 
 
@@ -275,7 +282,6 @@ a|
 [unstyled]
 * `uriorcurie`
 * (1..*)
-    
 | An established standard to which the described resource conforms.
 
 
@@ -284,7 +290,6 @@ a|
 [unstyled]
 * `string`
 * (0..*)
-    
 | A related resource from which the described resource is derived.
 
 
@@ -293,7 +298,6 @@ a|
 [unstyled]
 * `string`
 * (1)
-    
 | An account of the resource.
 
 
@@ -302,7 +306,6 @@ a|
 [unstyled]
 * `RepresentationTechnique`
 * (0..1)
-    
 | More information about the format in which an asset distribution is released. This is different from the file format as, for example, a ZIP file (file format) could contain an XML schema (representation technique).
 
 
@@ -311,7 +314,6 @@ a|
 [unstyled]
 * `RepresentationFormat`
 * (1)
-    
 | The file format, physical medium, or dimensions of the resource.
 
 
@@ -320,7 +322,6 @@ a|
 [unstyled]
 * `uriorcurie`
 * (1)
-    
 | The URL of a downloadable file with particulars such as its format and role indicated by the resource descriptor.
 
 
@@ -329,7 +330,6 @@ a|
 [unstyled]
 * `ProfileResourceRole`
 * (1)
-    
 | A description of a resource that defines an aspect - a particular part, feature or role - of a profile.
 
 |===

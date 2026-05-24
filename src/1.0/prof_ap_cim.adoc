@@ -9,15 +9,15 @@
 {%- endmacro %}
 
 {% macro cardinalities(slot) -%}
-    {% if slot.required and not slot.multivalued -%}
+    {%- if slot.required and not slot.multivalued -%}
     (1)
-    {% elif slot.required and slot.multivalued -%}
+    {%- elif slot.required and slot.multivalued -%}
     (1..*)
-    {% elif not slot.required and slot.multivalued -%}
+    {%- elif not slot.required and slot.multivalued -%}
     (0..*)
-    {% elif not slot.required and not slot.multivalued -%}
+    {%- elif not slot.required and not slot.multivalued -%}
     (0..1)
-    {% endif %}
+    {%- endif -%}
 {%- endmacro %}
 
 = {% if title %}{{ title }}{% else %}{{ name }}{% endif %}
@@ -63,20 +63,22 @@ This is an application profile of PROF for defining CIM profiles.
 .Schema
 [d2]
 ----
-profile: "Profile <<prof:Profile>>" {
+direction: down
+{% for class_name, class_ in classes.items() %}
+{{class_name}}: "{{ class_name }} <<{{ class_.class_uri }}>>" {
   shape: sql_table
-  id: int (1) {constraint: '[dct:identifier]'}
-  id: int (1) {constraint: dct:identifier}
-  monster: int
-  last_updated: timestamp
+  {% for attr_name, attr in class_.attributes.items() -%}
+  {%- if attr.range not in classes -%}
+  "{{ attr_name }}": {{ attr.slot_uri}} {constraint: {{ attr.range }} {{ cardinalities(attr) }}}
+  {% endif -%}
+  {% endfor %}
 }
-
-resource: "ProfileResource <<prof:ResourceDescriptor>>" {
-  shape: sql_table
-  id: int {constraint: "@id"}
-}
-
-profile.monster -> resource.id: "resource (0..*) \n<<prof:hasResource>>"
+{% for attr_name, attr in class_.attributes.items() -%}
+{%- if attr.range in classes -%}
+"{{ class_name }}" -> "{{ attr.range }}": {{ attr_name }}
+{% endif -%}
+{% endfor %}
+{% endfor %}
 ----
 
 

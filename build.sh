@@ -14,7 +14,7 @@ for src_dir in src/*; do
     echo "version: '$(yq .version $linkml)'" >> $root_module/../../antora.yml
     echo "title: $(yq .title $linkml)" >> $root_module/../../antora.yml
 
-    jinja2 $src_dir/prof_ap_cim.adoc $linkml -o $root_module/pages/index.adoc
+    jinja2 -o $root_module/pages/index.adoc $src_dir/prof_ap_cim.adoc $linkml
 
     cp \
         $linkml \
