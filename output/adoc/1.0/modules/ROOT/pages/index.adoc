@@ -12,15 +12,13 @@ Application profile of "`The Profiles Vocabulary`" (PROF) for describing CIM pro
 '''
 
 [#metadata]
---
+****
 URI:: https://prof-ap-cim.ucaiug.io/1.0#[https://prof-ap-cim.ucaiug.io/1.0#]
 Version:: 1.0
 Version of:: https://prof-ap-cim.ucaiug.io#[https://prof-ap-cim.ucaiug.io#]
 Conforms to:: https://www.w3.org/TR/dx-prof/
-Artifacts:: link:./prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | link:./prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | link:./prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
---
-
-
+Artifacts:: xref::attachment$prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | xref::attachment$prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | xref::attachment$prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
+****
 
 == Introduction
 
@@ -40,9 +38,64 @@ This is an application profile of PROF for defining CIM profiles.
 
 == Schema
 
+=== Namespaces
+
+.Vocabulary CURIEs
+[cols="1,5"]
+|===
+| Prefix | URI
+
+| `linkml`
+| https://w3id.org/linkml/[https://w3id.org/linkml/]
+
+| `sh`
+| http://www.w3.org/ns/shacl#[http://www.w3.org/ns/shacl#]
+
+| `adms`
+| http://www.w3.org/ns/adms#[http://www.w3.org/ns/adms#]
+
+| `rdf`
+| http://www.w3.org/1999/02/22-rdf-syntax-ns#[http://www.w3.org/1999/02/22-rdf-syntax-ns#]
+
+| `rdfs`
+| http://www.w3.org/2000/01/rdf-schema#[http://www.w3.org/2000/01/rdf-schema#]
+
+| `xsd`
+| http://www.w3.org/2001/XMLSchema#[http://www.w3.org/2001/XMLSchema#]
+
+| `dc`
+| http://purl.org/dc/elements/1.1/[http://purl.org/dc/elements/1.1/]
+
+| `dcterms`
+| http://purl.org/dc/terms/[http://purl.org/dc/terms/]
+
+| `dcat`
+| http://www.w3.org/ns/dcat#[http://www.w3.org/ns/dcat#]
+
+| `owl`
+| http://www.w3.org/2002/07/owl#[http://www.w3.org/2002/07/owl#]
+
+| `skos`
+| http://www.w3.org/2004/02/skos/core#[http://www.w3.org/2004/02/skos/core#]
+
+| `cim`
+| https://cim.ucaiug.io/ns#[https://cim.ucaiug.io/ns#]
+
+| `cims`
+| https://cim.ucaiug.io/schema-extensions#[https://cim.ucaiug.io/schema-extensions#]
+
+| `prof`
+| http://www.w3.org/ns/dx/prof/[http://www.w3.org/ns/dx/prof/]
+
+| `role`
+| http://www.w3.org/ns/dx/prof/role/[http://www.w3.org/ns/dx/prof/role/]
+
+|===
+
 .Schema
-[d2]
+[d2,width=70%]
 ----
+vars { d2-config.pad: 0 }
 direction: down
 
 Profile: "Profile <<prof:Profile>>" {
@@ -342,23 +395,31 @@ a|
 [nonum]
 == Appendix A: Diagram Layout profile example
 
-Any RDF serialization will do for profile instances, but it is recommended to make us of the link:./prof_ap_cim.context.jsonld[JSON-LD context,window=read-later]
+Any RDF serialization will do for profile instances, but it is recommended to make us of the xref::attachment$prof_ap_cim.context.jsonld[JSON-LD context,window=read-later]
 and write using YAML.
 
+.Source code (YAML-LD)
+[%collapsible]
+====
 [source,yaml]
 ----
 include::example$diagram_layout_ap.yml[]
 ----
+====
 
 Note how the user does not need to write any URIs or CURIEs by hand. Moreover, all the `@` characters which indicate special JSON-LD syntax have been aliased
 such that the user won't be confused by them.
 
 This YAML can trivially be converted to JSON, rendering a valid JSON-LD serialization of the profile instance:
 
+.Source code (JSON-LD)
+[%collapsible]
+====
 [source,json]
 ----
 include::example$diagram_layout_ap.jsonld[]
 ----
+====
 
 [nonum]
 == Appendix B: Validating profiles
