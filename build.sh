@@ -1,24 +1,31 @@
 #!/bin/env bash
 
-rm -rf _docs
-mkdir -p _docs/modules/ROOT/{attachments,pages,examples,images}
-echo "name: $(yq .name src/prof_ap_cim.linkml.yml)" >> _docs/antora.yml
-echo "version: '$(yq .version src/prof_ap_cim.linkml.yml)'" >> _docs/antora.yml
-echo "title: $(yq .title src/prof_ap_cim.linkml.yml)" >> _docs/antora.yml
+rm -rf output
+mkdir -p output/{adoc,html}
 
-jinja2 src/prof_ap_cim.adoc.jinja2 src/prof_ap_cim.linkml.yml -o _docs/modules/ROOT/pages/index.adoc
+for src_dir in src/*; do
+    linkml=$src_dir/schema/prof_ap_cim.linkml.yml
+    version=$(basename $src_dir)
+    root_module=output/adoc/$version/modules/ROOT
 
-cp \
-    src/prof_ap_cim.linkml.yml \
-    src/prof_ap_cim.shacl.ttl \
-    src/prof_ap_cim.context.jsonld \
-_docs/modules/ROOT/attachments
+    mkdir -p $root_module/{attachments,examples,images,pages}
 
-cp \
-    src/examples/diagram_layout_ap.yml \
-    src/examples/diagram_layout_ap.jsonld \
-_docs/modules/ROOT/examples
+    echo "name: ROOT" >> $root_module/../../antora.yml
+    echo "version: '$(yq .version $linkml)'" >> $root_module/../../antora.yml
+    echo "title: $(yq .title $linkml)" >> $root_module/../../antora.yml
 
-cp src/prof_ap_cim.uml.svg _docs/modules/ROOT/images
+    jinja2 $src_dir/prof_ap_cim.adoc $linkml -o $root_module/pages/index.adoc
 
-npx antora antora-playbook.yml
+    cp \
+        $linkml \
+        $src_dir/schema/prof_ap_cim.shacl.ttl \
+        $src_dir/schema/prof_ap_cim.context.jsonld \
+    $root_module/attachments
+    
+    cp \
+        $src_dir/examples/diagram_layout_ap.yml \
+        $src_dir/examples/diagram_layout_ap.jsonld \
+    $root_module/examples
+done
+
+npx antora antora-playbook.local.yml

@@ -1,3 +1,3 @@
 #!/bin/env bash
 
-python -m http.server -d docs
+npx http-serve output/html/

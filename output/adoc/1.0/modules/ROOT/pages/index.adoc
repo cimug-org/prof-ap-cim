@@ -1,41 +1,28 @@
+
+
+
+
+
+
 = PROF-AP-CIM
 :sectnums:
 
-Application profile of "The Profiles Vocabulary" (PROF) for describing CIM profiles.
+Application profile of "`The Profiles Vocabulary`" (PROF) for describing CIM profiles.
 
 '''
 
 [#metadata]
-****
+--
 URI:: https://prof-ap-cim.ucaiug.io/1.0#[https://prof-ap-cim.ucaiug.io/1.0#]
 Version:: 1.0
 Version of:: https://prof-ap-cim.ucaiug.io#[https://prof-ap-cim.ucaiug.io#]
 Conforms to:: https://www.w3.org/TR/dx-prof/
 Artifacts:: link:./prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | link:./prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | link:./prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
-****
+--
 
 
 
 == Introduction
-
-[d2]
-----
-profile: "Profile <<prof:Profile>>" {
-  shape: sql_table
-  id: int (1) {constraint: '[dct:identifier]'}
-  id: int (1) {constraint: dct:identifier}
-  monster: int
-  last_updated: timestamp
-}
-
-resource: "ProfileResource <<prof:ResourceDescriptor>>" {
-  shape: sql_table
-  id: int {constraint: "@id"}
-}
-
-profile.monster -> resource.id: "resource (0..*) \n<<prof:hasResource>>"
-
-----
 
 This is an application profile of PROF for defining CIM profiles.
 
@@ -54,13 +41,30 @@ This is an application profile of PROF for defining CIM profiles.
 == Schema
 
 .Schema
-image::prof_ap_cim.uml.svg[]
+[d2]
+----
+profile: "Profile <<prof:Profile>>" {
+  shape: sql_table
+  id: int (1) {constraint: '[dct:identifier]'}
+  id: int (1) {constraint: dct:identifier}
+  monster: int
+  last_updated: timestamp
+}
+
+resource: "ProfileResource <<prof:ResourceDescriptor>>" {
+  shape: sql_table
+  id: int {constraint: "@id"}
+}
+
+profile.monster -> resource.id: "resource (0..*) \n<<prof:hasResource>>"
+----
+
 
 === Class: Profile
 [horizontal]
 URI:: http://www.w3.org/ns/dx/prof/Profile[`prof:Profile`]
 
-A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications. This definition includes what are sometimes called "application profiles", "metadata application profiles", or "metadata profiles".
+A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications. This definition includes what are sometimes called "`application profiles`", "`metadata application profiles`", or "`metadata profiles`".
 
 
 

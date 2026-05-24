@@ -61,7 +61,24 @@ This is an application profile of PROF for defining CIM profiles.
 == Schema
 
 .Schema
-image::prof_ap_cim.uml.svg[]
+[d2]
+----
+profile: "Profile <<prof:Profile>>" {
+  shape: sql_table
+  id: int (1) {constraint: '[dct:identifier]'}
+  id: int (1) {constraint: dct:identifier}
+  monster: int
+  last_updated: timestamp
+}
+
+resource: "ProfileResource <<prof:ResourceDescriptor>>" {
+  shape: sql_table
+  id: int {constraint: "@id"}
+}
+
+profile.monster -> resource.id: "resource (0..*) \n<<prof:hasResource>>"
+----
+
 
 {% for class_name, class_ in classes.items() -%}
 === Class: {{ class_name }}
