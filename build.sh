@@ -31,3 +31,4 @@ for src_dir in src/*; do
 done
 
 npx antora antora-playbook.local.yml
+touch docs/.nojekyll
