@@ -41,13 +41,11 @@ Authors::
 * mailto:bart.kleijngeld@alliander.com[Bart Kleijngeld (Alliander)]
 Artifacts::
 [no-bullet]
-* **Schema:** xref::attachment$prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | xref::attachment$prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | xref::attachment$prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
-* **Examples:** xref::attachment$examples/diagram_layout_ap.yml[Diagram Layout profile (YAML-LD),window=read-later] | xref::attachment$examples/diagram_layout_ap.jsonld[Diagram Layout profile (JSON-LD),window=read-later]
+* Schema: xref::attachment$prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | xref::attachment$prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | xref::attachment$prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
+* Examples: xref::attachment$examples/diagram_layout_ap.yml[Diagram Layout profile (YAML-LD),window=read-later] | xref::attachment$examples/diagram_layout_ap.jsonld[Diagram Layout profile (JSON-LD),window=read-later]
 ****
 
 == Introduction
-
-This standard 
 
 This is an application profile of PROF for defining CIM profiles.
 
@@ -66,7 +64,7 @@ application profile:: A specification that constrains, extends, combines, or pro
 == Schema
 
 .Schema
-[d2,svg,theme=1,width=50%]
+[d2,svg,theme=1,width=40%]
 ----
 vars { d2-config.pad: 0 }
 direction: down
