@@ -57,7 +57,7 @@ The following sections are normative with regards to complying to this specifica
 
 * <<_schema>>
 
-The key words _MUST_, _MUST NOT_, _REQUIRED_, _SHALL_, _SHALL NOT_, _SHOULD_, _SHOULD NOT_, _RECOMMENDED_, _MAY_, and _OPTIONAL_ in this document are to be interpreted as described in <<<RFC2119>>>.
+The key words _MUST_, _MUST NOT_, _REQUIRED_, _SHALL_, _SHALL NOT_, _SHOULD_, _SHOULD NOT_, _RECOMMENDED_, _MAY_, and _OPTIONAL_ in this document are to be interpreted as described in <<RFC2119>>.
 
 == Terminology
 
@@ -66,7 +66,7 @@ application profile:: A specification that constrains, extends, combines, or pro
 == Schema
 
 .Schema
-[d2,svg,theme=1]
+[d2,svg,theme=1,width=50%]
 ----
 vars { d2-config.pad: 0 }
 direction: down
