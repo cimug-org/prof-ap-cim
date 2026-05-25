@@ -39,7 +39,10 @@ License:: {{ license }}
 Authors::
 [unstyled]
 * mailto:bart.kleijngeld@alliander.com[Bart Kleijngeld (Alliander)]
-Artifacts:: xref::attachment$prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | xref::attachment$prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | xref::attachment$prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
+Artifacts::
+[no-bullet]
+* **Schema:** xref::attachment$prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | xref::attachment$prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | xref::attachment$prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
+* **Examples:** xref::attachment$examples/diagram_layout_ap.yml[Diagram Layout profile (YAML-LD),window=read-later] | xref::attachment$examples/diagram_layout_ap.jsonld[Diagram Layout profile (JSON-LD),window=read-later]
 ****
 
 == Introduction
@@ -136,7 +139,7 @@ and write using YAML.
 ====
 [source,yaml]
 ----
-include::example$diagram_layout_ap.yml[]
+include::attachment$examples/diagram_layout_ap.yml[]
 ----
 ====
 
@@ -150,7 +153,7 @@ This YAML can trivially be converted to JSON, rendering a valid JSON-LD serializ
 ====
 [source,json]
 ----
-include::example$diagram_layout_ap.jsonld[]
+include::attachment$examples/diagram_layout_ap.jsonld[]
 ----
 ====
 

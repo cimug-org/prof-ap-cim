@@ -132,7 +132,7 @@ and write using YAML.
 ====
 [source,yaml]
 ----
-include::example$diagram_layout_ap.yml[]
+include::attachment$examples/diagram_layout_ap.yml[]
 ----
 ====
 
@@ -146,7 +146,7 @@ This YAML can trivially be converted to JSON, rendering a valid JSON-LD serializ
 ====
 [source,json]
 ----
-include::example$diagram_layout_ap.jsonld[]
+include::attachment$examples/diagram_layout_ap.jsonld[]
 ----
 ====
 
