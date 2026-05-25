@@ -1,10 +1,11 @@
-id: https://prof-ap-cim.ucaiug.io/1.0#
-instantiates: https://prof-ap-cim.ucaiug.io#
+id: https://ucaiug.io/prof-ap-cim/2.0#
+instantiates: https://ucaiug.io/prof-ap-cim#
 name: PROF-AP-CIM
 title: PROF-AP-CIM
-version: '1.0'
+version: '2.0'
 conforms_to: https://www.w3.org/TR/dx-prof/
 description: Application profile of "`The Profiles Vocabulary`" (PROF) for describing CIM profiles.
+license: Apache-2.0
 prefixes:
   linkml: https://w3id.org/linkml/
   sh: http://www.w3.org/ns/shacl#

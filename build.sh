@@ -1,12 +1,12 @@
 #!/bin/env bash
 
-rm -rf output
-mkdir -p output/{adoc,html}
+rm -rf docs-adoc
+mkdir -p docs-adoc
 
 for src_dir in src/*; do
     linkml=$src_dir/schema/prof_ap_cim.linkml.yml
     version=$(basename $src_dir)
-    root_module=output/adoc/$version/modules/ROOT
+    root_module=docs-adoc/$version/modules/ROOT
 
     mkdir -p $root_module/{attachments,examples,images,pages}
 

@@ -1,10 +1,11 @@
-id: https://prof-ap-cim.ucaiug.io/1.0#
-instantiates: https://prof-ap-cim.ucaiug.io#
+id: https://ucaiug.io/prof-ap-cim/1.0#
+instantiates: https://ucaiug.io/prof-ap-cim#
 name: PROF-AP-CIM
 title: PROF-AP-CIM
 version: '1.0'
 conforms_to: https://www.w3.org/TR/dx-prof/
-description: Application profile of "The Profiles Vocabulary" (PROF) for describing CIM profiles.
+description: Application profile of "`The Profiles Vocabulary`" (PROF) for describing CIM profiles.
+license: Apache-2.0
 prefixes:
   linkml: https://w3id.org/linkml/
   sh: http://www.w3.org/ns/shacl#
@@ -26,7 +27,7 @@ imports:
 classes:
   Profile:
     description: | 
-      A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications. This definition includes what are sometimes called "application profiles", "metadata application profiles", or "metadata profiles".
+      A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications. This definition includes what are sometimes called "`application profiles`", "`metadata application profiles`", or "`metadata profiles`".
     class_uri: prof:Profile
     attributes:
       version:

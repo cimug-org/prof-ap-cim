@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>PROF-AP-CIM</title>
-    <link rel="canonical" href="http://localhost:8000/1.0/index.html">
+    <link rel="canonical" href="http://localhost:8000/2.0/index.html">
     <meta name="generator" content="Antora 3.1.14">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -27,7 +27,14 @@
       </div>
     </div>
     <div class="row2">
-          </div>
+      <div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">2.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="index.html">2.0</a>
+    <a class="version" href="../1.0/index.html">1.0</a>
+  </div>
+</div>
+    </div>
   </div>
 <div id="preamble">
 <div class="sectionbody">
@@ -39,21 +46,35 @@
 <div class="content">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">URI</dt>
+<dt class="hdlist1">This version</dt>
 <dd>
-<p><a href="https://prof-ap-cim.ucaiug.io/1.0#">https://prof-ap-cim.ucaiug.io/1.0#</a></p>
+<p><a href="https://ucaiug.io/prof-ap-cim/2.0#">https://ucaiug.io/prof-ap-cim/2.0#</a></p>
 </dd>
-<dt class="hdlist1">Version</dt>
+<dt class="hdlist1">Version number</dt>
 <dd>
-<p>1.0</p>
+<p>2.0 (draft)</p>
 </dd>
 <dt class="hdlist1">Version of</dt>
 <dd>
-<p><a href="https://prof-ap-cim.ucaiug.io#">https://prof-ap-cim.ucaiug.io#</a></p>
+<p><a href="https://ucaiug.io/prof-ap-cim#">https://ucaiug.io/prof-ap-cim#</a></p>
 </dd>
 <dt class="hdlist1">Conforms to</dt>
 <dd>
 <p><a href="https://www.w3.org/TR/dx-prof/" class="bare">https://www.w3.org/TR/dx-prof/</a></p>
+</dd>
+<dt class="hdlist1">License</dt>
+<dd>
+<p>Apache-2.0</p>
+</dd>
+<dt class="hdlist1">Authors</dt>
+<dd>
+<div class="ulist unstyled">
+<ul class="unstyled">
+<li>
+<p><a href="mailto:bart.kleijngeld@alliander.com">Bart Kleijngeld (Alliander)</a></p>
+</li>
+</ul>
+</div>
 </dd>
 <dt class="hdlist1">Artifacts</dt>
 <dd>
@@ -74,42 +95,44 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_status"><a class="anchor" href="#_status"></a>2. Status</h2>
+<h2 id="_conformance"><a class="anchor" href="#_conformance"></a>2. Conformance</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><mark>TODO</mark>.</p>
+<p>The following sections are normative with regards to complying to this specification:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_schema">Schema</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_license"><a class="anchor" href="#_license"></a>3. License</h2>
+<h2 id="_terminology"><a class="anchor" href="#_terminology"></a>3. Terminology</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><mark>TODO</mark>.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">application profile</dt>
+<dd>
+<p>A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_conformance"><a class="anchor" href="#_conformance"></a>4. Conformance</h2>
+<h2 id="_schema"><a class="anchor" href="#_schema"></a>4. Schema</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><mark>TODO</mark>.</p>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-2f6042f5f596f29d20808ebb03224a853e96a2ef.svg" alt="Schema" width="70%">
 </div>
+<div class="title">Figure 1. Schema</div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_terminology"><a class="anchor" href="#_terminology"></a>5. Terminology</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><mark>TODO</mark>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_schema"><a class="anchor" href="#_schema"></a>6. Schema</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_namespaces"><a class="anchor" href="#_namespaces"></a>6.1. Namespaces</h3>
+<h3 id="_namespaces"><a class="anchor" href="#_namespaces"></a>4.1. Namespaces</h3>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Vocabulary CURIEs</caption>
 <colgroup>
@@ -185,15 +208,9 @@
 </tr>
 </tbody>
 </table>
-<div class="imageblock kroki">
-<div class="content">
-<img src="_images/diag-2f6042f5f596f29d20808ebb03224a853e96a2ef.svg" alt="Schema" width="70%">
-</div>
-<div class="title">Figure 1. Schema</div>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_class_profile"><a class="anchor" href="#_class_profile"></a>6.2. Class: Profile</h3>
+<h3 id="_class_profile"><a class="anchor" href="#_class_profile"></a>4.2. Class: Profile</h3>
 <div class="hdlist">
 <table>
 <tr>
@@ -480,7 +497,7 @@ URI
 </table>
 </div>
 <div class="sect2">
-<h3 id="_class_profileresource"><a class="anchor" href="#_class_profileresource"></a>6.3. Class: ProfileResource</h3>
+<h3 id="_class_profileresource"><a class="anchor" href="#_class_profileresource"></a>4.3. Class: ProfileResource</h3>
 <div class="hdlist">
 <table>
 <tr>
