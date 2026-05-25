@@ -44,6 +44,8 @@ Artifacts:: xref::attachment$prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-la
 
 == Introduction
 
+This standard 
+
 This is an application profile of PROF for defining CIM profiles.
 
 == Conformance
@@ -52,6 +54,8 @@ The following sections are normative with regards to complying to this specifica
 
 * <<_schema>>
 
+The key words _MUST_, _MUST NOT_, _REQUIRED_, _SHALL_, _SHALL NOT_, _SHOULD_, _SHOULD NOT_, _RECOMMENDED_, _MAY_, and _OPTIONAL_ in this document are to be interpreted as described in <<<RFC2119>>>.
+
 == Terminology
 
 application profile:: A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.
@@ -59,22 +63,22 @@ application profile:: A specification that constrains, extends, combines, or pro
 == Schema
 
 .Schema
-[d2,width=70%]
+[d2,svg,theme=1]
 ----
 vars { d2-config.pad: 0 }
 direction: down
 {% for class_name, class_ in classes.items() %}
-{{class_name}}: "{{ class_name }} <<{{ class_.class_uri }}>>" {
+"{{class_name}}": "{{ class_.class_uri }}" {
   shape: sql_table
   {% for attr_name, attr in class_.attributes.items() -%}
   {%- if attr.range not in classes -%}
-  "{{ attr_name }}": {{ attr.slot_uri}} {constraint: {{ attr.range }} {{ cardinalities(attr) }}}
+  "{{ attr.slot_uri}}" {constraint: {{ cardinalities(attr) }}}
   {% endif -%}
   {% endfor %}
 }
 {% for attr_name, attr in class_.attributes.items() -%}
 {%- if attr.range in classes -%}
-"{{ class_name }}" -> "{{ attr.range }}": {{ attr_name }}
+"{{ class_name }}" -> "{{ attr.range }}": "{{ attr.slot_uri }}"
 {% endif -%}
 {% endfor %}
 {% endfor %}
@@ -93,26 +97,26 @@ direction: down
 |===
 
 {% for class_name, class_ in classes.items() -%}
-=== Class: {{ class_name }}
+=== Class: {{ class_.class_uri }}
 [horizontal]
 URI:: {{ link_curie(class_.class_uri) }}
 
 {% if class_.description %}{{ class_.description }}{% endif %}
 
-{% for attr_name, attr_ in class_.attributes.items() -%}
+{% for attr_name, attr in class_.attributes.items() -%}
 {% if loop.first %}
-.Profile properties
+.Properties
 [cols="1,1,3"]
 |===
 | Property | Type | Description
 
 {% endif %}
-| {{ curietouri(attr_.slot_uri) }}[`{{ attr_name }}`, title={{attr_.slot_uri}}]
+| {{ curietouri(attr.slot_uri) }}[`{{ attr.slot_uri }}`, title={{attr.slot_uri}}]
 a|
 [unstyled]
-* `{{ attr_.range }}`
-* {{ cardinalities(attr_) }}
-| {{ attr_.description }}
+* `{{ attr.range }}`
+* {{ cardinalities(attr) }}
+| {{ attr.description }}
 {% if loop.last %}
 |===
 {% endif %}
@@ -153,3 +157,8 @@ include::example$diagram_layout_ap.jsonld[]
 [nonum]
 == Appendix B: Validating profiles
 
+[bibliography]
+== References
+
+[bibliography]
+* [[[RFC2119]]] S. Bradner. 1997. https://www.rfc-editor.org/rfc/rfc2119[Key words for use in RFCs to Indicate Requirement Levels].
