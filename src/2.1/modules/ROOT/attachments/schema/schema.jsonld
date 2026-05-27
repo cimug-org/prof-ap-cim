@@ -25,7 +25,8 @@
       "@index": "path"
     },
     "in": {
-      "@type": "@id"
+      "@type": "@id",
+      "@reverse": "skos:inScheme"
     },
     "node": {
       "@type": "@id"
@@ -74,11 +75,20 @@
       }
     },
     "cims:RepresentationTechnique": {
-      "type": "sh:NodeShape",
+      "type": [
+        "sh:NodeShape",
+        "skos:ConceptScheme"
+      ],
       "rdfs:label": "RepresentationTechnique",
       "in": [
-        "cims:linkml",
-        "cims:shacl"
+        {
+          "id": "cims:linkml",
+          "dcterms:description": "The LinkML language."
+        },
+        {
+          "id": "cims:shacl",
+          "dcterms:description": "The LinkML language."
+        }
       ]
     }
   }
