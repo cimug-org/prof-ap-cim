@@ -1,32 +1,40 @@
 {
   "@context": {
+    "sh": "http://www.w3.org/ns/shacl#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "cim": "https://cim.ucaiug.io/ns#",
+    "cims": "https://cim.ucaiug.io/schema-extensions#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "role": "http://www.w3.org/ns/dx/prof/role/",
     "id": "@id",
     "type": "@type",
-    "hasConcept": {
-      "@reverse": "skos:inScheme",
-      "@type": "@id"
-    },
-    "sh": "https://w3.org/ns/shacl#",
-    "xsd": "http://xsd.org#",
-    "cims": "https://cims.org#",
-    "prof": "https://w3id.org/prof#",
-    "skos": "https://w3id.org/skos#",
-    "dcterms": "https://purl.org/dct#",
+    "@vocab": "https://w3.org/ns/shacl#",
     "shapes": {
       "@id": "cims:shapes",
       "@container": "@id"
     },
-    "concepts": {
-      "@id": "cims:shapes",
-      "@container": "@id"
-    },
-    "sh:property": {
+    "property": {
       "@container": "@index",
-      "@index": "sh:path"
+      "@index": "path"
     },
-    "@vocab": "https://w3.org/ns/shacl#",
-    "sh:in": {
-      "@container": "@list"
+    "in": {
+      "@type": "@id"
+    },
+    "node": {
+      "@type": "@id"
+    },
+    "datatype": {
+      "@type": "@id"
+    },
+    "path": {
+      "@type": "@id"
     }
   },
   "id": "https://www.ucaiug.io/prof-ap-cim/1.0#",
@@ -57,7 +65,7 @@
       "property": {
         "adms:representationTechnique": {
           "minCardinality": 1,
-          "node": "cims:RepresentationTechhnique"
+          "node": "cims:RepresentationTechnique"
         },
         "dcterms:identifier": {
           "maxCardinality": 1,
@@ -65,16 +73,12 @@
         }
       }
     },
-    "cims:RepresentationTcnique": {
+    "cims:RepresentationTechnique": {
       "type": "sh:NodeShape",
       "rdfs:label": "RepresentationTechnique",
       "in": [
-        {
-          "@id": "cims:linkml"
-        },
-        {
-          "@id": "cims:shacl"
-        }
+        "cims:linkml",
+        "cims:shacl"
       ]
     }
   }
