@@ -25,7 +25,8 @@
       "@index": "path"
     },
     "in": {
-      "@container": "@list"
+      "@container": "@list",
+      "@type": "@id"
     },
     "node": {
       "@type": "@id"
@@ -254,18 +255,9 @@
       ],
       "rdfs:label": "RepresentationTechnique",
       "in": [
-        {
-          "id": "cims:linkml",
-          "dcterms:description": "The LinkML language."
-        },
-        {
-          "id": "cims:rdfs",
-          "dcterms:description": "Resource Description Framework Schema language."
-        },
-        {
-          "id": "cims:shacl",
-          "dcterms:description": "The Shapes Constraints Language."
-        }
+        "cims:linkml",
+        "cims:rdfs",
+        "cims:shacl"
       ]
     },
     "cims:RepresentationFormat": {
@@ -275,18 +267,9 @@
       ],
       "rdfs:label": "RepresentationFormat",
       "in": [
-        {
-          "id": "cims:yaml",
-          "dcterms:description": "Yet Antother Markup Language."
-        },
-        {
-          "id": "cims:turtle",
-          "dcterms:description": "Terse RDF Triple Language."
-        },
-        {
-          "id": "cims:pdf",
-          "dcterms:description": "Not to be confused with..."
-        }
+        "cims:yaml",
+        "cims:turtle",
+        "cims:pdf"
       ]
     },
     "cims:ResourceDescriptorRole": {
