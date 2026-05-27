@@ -1,0 +1,76 @@
+= PROF-AP-CIM
+:sectnums:
+
+include::partial$header.adoc[]
+
+== Introduction
+
+This is an application profile of PROF for defining CIM profiles.
+
+== Conformance
+
+The following sections are normative with regards to complying to this specification:
+
+* <<_schema>>
+
+The key words _MUST_, _MUST NOT_, _REQUIRED_, _SHALL_, _SHALL NOT_, _SHOULD_, _SHOULD NOT_, _RECOMMENDED_, _MAY_, and _OPTIONAL_ in this document are to be interpreted as described in <<RFC2119>>.
+
+== Terminology
+
+application profile:: A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.
+
+== Schema
+
+.Schema
+[d2,svg,theme=1,width=40%]
+----
+include::partial$schema-diagram.d2[]
+----
+
+=== Namespaces
+
+CURIEs are used to refer to terms from other vocabularies, each of whose base IRI is represented by a CURIE prefix:
+
+{% with prefix = prefix -%}
+include::partial$schema-namespaces.adoc[]
+{% endwith %}
+
+include::partial$schema-classes.adoc[]
+
+[nonum]
+== Appendix A: Diagram Layout profile example
+
+Any RDF serialization will do for profile instances, but it is recommended to make us of the xref::attachment$schema/prof_ap_cim.context.jsonld[JSON-LD context,window=read-later]
+and write using YAML.
+
+.Source code (YAML-LD)
+[%collapsible]
+====
+[source,yaml]
+----
+include::attachment$examples/diagram_layout_ap.yml[]
+----
+====
+
+Note how the user does not need to write any URIs or CURIEs by hand. Moreover, all the `@` characters which indicate special JSON-LD syntax have been aliased
+such that the user won't be confused by them.
+
+This YAML can trivially be converted to JSON, rendering a valid JSON-LD serialization of the profile instance:
+
+.Source code (JSON-LD)
+[%collapsible]
+====
+[source,json]
+----
+include::attachment$examples/diagram_layout_ap.jsonld[]
+----
+====
+
+[nonum]
+== Appendix B: Validating profiles
+
+[bibliography]
+== References
+
+[bibliography]
+* [[[RFC2119]]] S. Bradner. 1997. https://www.rfc-editor.org/rfc/rfc2119[Key words for use in RFCs to Indicate Requirement Levels].

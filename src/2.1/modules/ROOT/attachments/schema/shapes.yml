@@ -1,0 +1,54 @@
+'@context':
+  id: '@id'
+  type: '@type'
+  hasConcept:
+    '@reverse': skos:inScheme
+    '@type': '@id'
+  sh: https://w3.org/ns/shacl#
+  xsd: http://xsd.org#
+  cims: https://cims.org#
+  prof: https://w3id.org/prof#
+  skos: https://w3id.org/skos#
+  dcterms: https://purl.org/dct#
+  shapes:
+    '@id': cims:shapes
+    '@container': '@id'
+  concepts:
+    '@id': cims:shapes
+    '@container': '@id'
+  sh:property:  # I could make this into `properties`
+    '@container': '@index'
+    '@index': sh:path
+  '@vocab': https://w3.org/ns/shacl#
+  sh:in:
+    '@container': '@list'
+  sh:node:
+    '@type': '@id'
+id: https://www.ucaiug.io/prof-ap-cim/1.0#
+type: owl:Ontology
+rdfs:comment: This is pretty much how I would do it.
+shapes:
+  prof:Profile:
+    type: [sh:NodeShape, rdfs:Class]
+    rdfs:label: Profile
+    property:
+      dcterms:description:
+        minCardinality: 1
+      dcterms:identifier:
+        maxCardinality: 1
+        datatype: xsd:string
+  prof:ResourceDescriptor:
+    type: [sh:NodeShape, rdfs:Class]
+    property:
+      adms:representationTechnique:
+        minCardinality: 1
+        node: cims:RepresentationTechhnique
+      dcterms:identifier:
+        maxCardinality: 1
+        datatype: xsd:string
+  cims:RepresentationTcnique:
+    type: sh:NodeShape
+    rdfs:label: RepresentationTechnique
+    in:
+      - '@id': cims:linkml
+      - '@id': cims:shacl

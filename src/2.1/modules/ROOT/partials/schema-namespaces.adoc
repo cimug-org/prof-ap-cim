@@ -1,0 +1,12 @@
+{% from '_helpers.adoc' import link_curie, curietouri, cardinalities with context %}
+
+.CURIE prefixes
+[cols="1,5",align=center,width=50%]
+|===
+| Prefix | URI
+{% for prefix, uri in prefixes.items() %}
+| `{{ prefix }}`
+| {{ uri }}[{{ uri }}]
+{% endfor %}
+|===
+

@@ -1,0 +1,20 @@
+{% from '_helpers.adoc' import link_curie, curietouri, cardinalities -%}
+
+vars { d2-config.pad: 0 }
+direction: down
+{% for class_name, class_ in classes.items() %}
+"{{class_name}}": "{{ class_.class_uri }}" {
+  shape: sql_table
+  {% for attr_name, attr in class_.attributes.items() -%}
+  {%- if attr.range not in classes -%}
+  "{{ attr.slot_uri}}" {constraint: {{ cardinalities(attr) }}}
+  {% endif -%}
+  {% endfor %}
+}
+{% for attr_name, attr in class_.attributes.items() -%}
+{%- if attr.range in classes -%}
+"{{ class_name }}" -> "{{ attr.range }}": "{{ attr.slot_uri }}"
+{% endif -%}
+{% endfor %}
+{% endfor %}
+

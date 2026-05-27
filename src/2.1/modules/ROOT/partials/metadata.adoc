@@ -1,0 +1,15 @@
+[#metadata]
+****
+This version:: {{ id }}[{{ id }}]
+Version number:: {page-component-display-version} (draft)
+Version of:: {{ instantiates }}[{{ instantiates }}]
+Conforms to:: {{ conforms_to }}
+License:: {{ license }}
+Authors::
+[unstyled]
+* mailto:bart.kleijngeld@alliander.com[Bart Kleijngeld (Alliander)]
+Artifacts::
+[no-bullet]
+* Schema: xref::attachment$schema/prof_ap_cim.shacl.ttl[SHACL (Turtle),window=read-later] | xref::attachment$schema/prof_ap_cim.linkml.yml[LinkML (YAML),window=read-later] | xref::attachment$schema/prof_ap_cim.context.jsonld[JSON-LD context (JSON-LD),window=read-later]
+* Examples: xref::attachment$examples/diagram_layout_ap.yml[Diagram Layout profile (YAML-LD),window=read-later] | xref::attachment$examples/diagram_layout_ap.jsonld[Diagram Layout profile (JSON-LD),window=read-later]
+****

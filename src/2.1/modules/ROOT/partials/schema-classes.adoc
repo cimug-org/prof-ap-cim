@@ -1,0 +1,29 @@
+{% from '_helpers.adoc' import link_curie, curietouri, cardinalities with context -%}
+
+{% for class_name, class_ in classes.items() -%}
+=== Class: {{ class_.class_uri }}
+[horizontal]
+URI:: {{ link_curie(class_.class_uri) }}
+
+{% if class_.description %}{{ class_.description }}{% endif %}
+
+{% for attr_name, attr in class_.attributes.items() -%}
+{% if loop.first %}
+.Properties
+[cols="1,1,3"]
+|===
+| Property | Type | Description
+
+{% endif %}
+| {{ curietouri(attr.slot_uri) }}[`{{ attr.slot_uri }}`, title={{attr.slot_uri}}]
+a|
+[unstyled]
+* `{{ attr.range }}`
+* {{ cardinalities(attr) }}
+| {{ attr.description }}
+{% if loop.last %}
+|===
+{% endif %}
+{% endfor %}
+
+{% endfor %}

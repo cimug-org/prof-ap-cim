@@ -1,0 +1,22 @@
+{% macro curietouri(curie) -%}
+    {%- set prefix, name = curie.split(":") -%}
+    {{ prefixes[prefix] ~ name }}
+{%- endmacro %}
+
+{% macro link_curie(curie) -%}
+    {%- set uri = curietouri(curie) -%}
+    {{ uri ~ "[`" ~ curie ~ "`]" }}
+{%- endmacro %}
+
+{% macro cardinalities(slot) -%}
+    {%- if slot.required and not slot.multivalued -%}
+    (1)
+    {%- elif slot.required and slot.multivalued -%}
+    (1..*)
+    {%- elif not slot.required and slot.multivalued -%}
+    (0..*)
+    {%- elif not slot.required and not slot.multivalued -%}
+    (0..1)
+    {%- endif -%}
+{%- endmacro %}
+

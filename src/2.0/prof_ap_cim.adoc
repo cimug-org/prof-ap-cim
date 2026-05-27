@@ -87,8 +87,10 @@ direction: down
 
 === Namespaces
 
-.Vocabulary CURIEs
-[cols="1,5"]
+CURIEs are used to refer to terms from other vocabularies, each of whose base IRI is represented by a CURIE prefix:
+
+.CURIE prefixes
+[cols="1,5",align=center,width=50%]
 |===
 | Prefix | URI
 {% for prefix, uri in prefixes.items() %}
