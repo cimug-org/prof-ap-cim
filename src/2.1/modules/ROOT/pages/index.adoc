@@ -31,9 +31,7 @@ include::partial$schema-diagram.d2[]
 
 CURIEs are used to refer to terms from other vocabularies, each of whose base IRI is represented by a CURIE prefix:
 
-{% with prefix = prefix -%}
 include::partial$schema-namespaces.adoc[]
-{% endwith %}
 
 include::partial$schema-classes.adoc[]
 
@@ -68,6 +66,8 @@ include::attachment$examples/diagram_layout_ap.jsonld[]
 
 [nonum]
 == Appendix B: Validating profiles
+
+TODO.
 
 [bibliography]
 == References
