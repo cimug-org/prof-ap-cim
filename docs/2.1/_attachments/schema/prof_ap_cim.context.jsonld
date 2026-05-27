@@ -24,8 +24,8 @@
         "@id": "dcat:isVersionOf",
         "@type": "@id"
     },
-    "priorVersion": {
-        "@id": "dcat:priorVersion",
+    "previousVersion": {
+        "@id": "dcat:previousVersion",
         "@type": "@id"
     },
     "issued": {
@@ -60,15 +60,15 @@
         "@id": "rdfs:label"
     },
     "language": {
-        "@id": "dcterms:language"
+        "@id": "dcterms:language",
+	"@type": "xsd:language"
     },
     "license": {
         "@id": "dcterms:license",
         "@type": "@id"
     },
     "publisher": {
-        "@id": "dcterms:publisher",
-        "@type": "@id"
+        "@id": "dcterms:publisher"
     },
     "rightsHolder": {
         "@id": "dcterms:rightsHolder"
@@ -76,7 +76,7 @@
     "rights": {
         "@id": "dcterms:rights"
     },
-    "resource": {
+    "hasResource": {
         "@id": "prof:hasResource"
     },
     "representationTechnique": {

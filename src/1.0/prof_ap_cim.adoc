@@ -22,6 +22,7 @@
 
 = {% if title %}{{ title }}{% else %}{{ name }}{% endif %}
 :sectnums:
+:page-spectype: Application Profile
 
 {% if description -%}
 {{ description }}

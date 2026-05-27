@@ -1,5 +1,6 @@
 = PROF-AP-CIM
 :sectnums:
+:page-spectype: Application Profile
 
 include::partial$header.adoc[]
 

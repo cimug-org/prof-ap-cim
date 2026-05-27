@@ -47,5 +47,6 @@ for src_dir in src/*; do
     $root_module/attachments/examples
 done
 
+# npx antora antora-playbook.yml
 npx antora antora-playbook.local.yml
 touch docs/.nojekyll
