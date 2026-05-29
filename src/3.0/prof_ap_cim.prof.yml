@@ -92,6 +92,7 @@ license: http://www.apache.org/licenses/LICENSE-2.0
 publisher: https://www.ucaiug.org/
 rightsHolder: UCA International User Group
 rights: Copyright
+
 #hasResource:
 #  - id: https://cim.ucaiug.io/dcatcim/1.0#Vocabulary
 #    type: prof:ResourceDescriptor

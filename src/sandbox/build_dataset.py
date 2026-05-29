@@ -21,4 +21,4 @@ if __name__ == "__main__":
     prof_dataset = Dataset(chain(parse_yamlld("prof_ap_cim.prof.yml"), parse_yamlld("prof_ap_cim.skos.yml"), parse_yamlld("prof_ap_cim.shacl.yml"), parse_yamlld("prof_ap_cim.rdfs.yml")))
     #prof_dataset = Dataset(chain(map(parse_yamlld, ["prof_ap_cim.prof.yml", "prof_ap_cim.shacl.yml", "prof_ap_cim.rdfs.yml", "prof_ap_cim.skos.yml"])))
 
-    serialize(prof_dataset, "prof_ap.jsonld", format=RdfFormat.JSON_LD)
+    serialize(prof_dataset, "build/prof_ap.jsonld", format=RdfFormat.JSON_LD)
