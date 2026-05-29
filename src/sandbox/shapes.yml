@@ -1,37 +1,28 @@
 '@context':
   id: '@id'
   type: '@type'
-  hasConcept:
-    '@reverse': skos:inScheme
-    '@type': '@id'
   sh: https://w3.org/ns/shacl#
   xsd: http://xsd.org#
   cims: https://cims.org#
   prof: https://w3id.org/prof#
   skos: https://w3id.org/skos#
   dcterms: https://purl.org/dct#
-  shapes:
-    '@id': cims:shapes
-    '@container': '@id'
-  concepts:
-    '@id': cims:shapes
-    '@container': '@id'
-  sh:property:  # I could make this into `properties`
-    '@container': '@index'
+  classes:
+    '@id': sh:nodes
+    '@index': rdfs:label
+  attributes:
+    '@id': sh:property
     '@index': sh:path
-  '@vocab': https://w3.org/ns/shacl#
-  sh:in:
-    '@container': '@list'
-  sh:node:
-    '@type': '@id'
-id: https://www.ucaiug.io/prof-ap-cim/1.0#
+  class_uri:
+    '@id': @id
+id: https://www.ucaiug.io/prof-ap-cim/2.1#
 type: owl:Ontology
 rdfs:comment: This is pretty much how I would do it.
-shapes:
-  prof:Profile:
+classes:
+  Profile:
+    class_uri: prof:Profile
     type: [sh:NodeShape, rdfs:Class]
-    rdfs:label: Profile
-    property:
+    attributes:
       dcterms:description:
         minCardinality: 1
       dcterms:identifier:

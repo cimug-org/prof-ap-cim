@@ -1,0 +1,58 @@
+'@context':
+  adms: http://www.w3.org/ns/adms#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  cim: https://cim.ucaiug.io/ns#
+  cims: https://cim.ucaiug.io/schema-extensions#
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
+  id: '@id'
+  type: '@type'
+  '@vocab': http://www.w3.org/2004/02/skos/core#
+  schemes:
+    '@id': cims:conceptSchemes
+    '@container': '@id'
+  resourceOf:
+    '@reverse': prof:hasResource
+    '@type': '@id'
+  concepts:
+    '@reverse': skos:inScheme
+    '@type': '@id'
+
+id: https://ucaiug.io/prof-ap-cim/3.0/concepts#
+type: owl:Ontology
+resourceOf: https://ucaiug.io/prof-ap-cim/3.0#
+dcat:conformsTo: http://www.w3.org/ns/shacl#
+dcterms:license: https://www.apache.org/licenses/LICENSE-2.0.txt
+schemes:
+  cims:RepresentationTechnique:
+    type: skos:ConceptScheme
+    prefLabel: representation technique
+    concepts:
+      - cims:linkml
+      - cims:rdfs
+      - cims:shacl
+
+  cims:RepresentationFormat:
+    type: skos:ConceptScheme
+    prefLabel: representation format
+    concepts:
+      - cims:yaml
+      - cims:turtle
+      - cims:pdf
+
+  cims:ResourceDescriptorRole:
+    type: skos:ConceptScheme
+    prefLabel: RourceDescriptorRole
+    concepts:
+      - id: role:constraints
+        dcterms:description: Descriptions of obligations, limitations or extensions that the profile defines.
+      - id: role:vocabulary
+        dcterms:description: Defines terms used in the profile specification.
+      - id: role:specification
+        dcterms:description: Defining the profile in human-readable form.

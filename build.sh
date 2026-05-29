@@ -21,6 +21,8 @@ for src_dir in src/*; do
         jinja2 -o $root_module/partials/schema-namespaces.adoc $src_dir/modules/ROOT/partials/schema-namespaces.adoc $linkml
         jinja2 -o $root_module/pages/index.adoc $src_dir/modules/ROOT/pages/index.adoc $linkml
         continue
+    elif [ $version == sandbox ]; then
+        continue
     fi
 
     linkml=$src_dir/schema/prof_ap_cim.linkml.yml
@@ -49,3 +51,4 @@ done
 
 npx antora ${1:-antora-playbook.yml}
 touch docs/.nojekyll
+# TODO: Consider copying some artifacts files here (SHACL, JSON-LD context) so you can get cleaner URIs for them.

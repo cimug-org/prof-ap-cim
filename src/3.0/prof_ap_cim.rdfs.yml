@@ -1,0 +1,117 @@
+'@context':
+  adms: http://www.w3.org/ns/adms#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  cim: https://cim.ucaiug.io/ns#
+  cims: https://cim.ucaiug.io/schema-extensions#
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
+  id: '@id'
+  type: '@type'
+  '@vocab': http://www.w3.org/2000/01/rdf-schema#
+  classes:
+    '@id': cims:classes
+    '@container': '@id'
+  properties:
+    '@id': cims:properties
+    '@container': '@id'
+
+id: https://ucaiug.io/prof-ap-cim/3.0/vocab#
+type: owl:Ontology
+#resourceOf: https://ucaiug.io/prof-ap-cim/3.0#
+dcat:conformsTo: http://www.w3.org/ns/shacl#
+dcterms:license: https://www.apache.org/licenses/LICENSE-2.0.txt
+
+classes:
+  prof:Profile:
+    type: rdfs:Class
+    skos:prefLabel: profile
+    label: Profile
+    dcterms:description: | 
+      A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications. This definition includes what are sometimes called "`application profiles`", "`metadata application profiles`", or "`metadata profiles`".
+  prof:ResourceDescriptor:
+    type: rdfs:Class
+    skos:prefLabel: profile resource
+    label: ResourceDescriptor
+
+properties:
+  dcat:version:
+    type: rdf:Property
+    label: version
+    dcterms:description: The version indicator (name or identifier) of a resource.
+  dcterms:title:
+    type: rdf:Property
+    label: title
+    dcterms:description: A name given to the resource.
+  dcat:isVersionOf:
+    label: isVersionOf
+    type: rdf:Property
+    dcterms:description: A related resource of which the described resource is a version, edition, or adaptation.
+  dcat:previousVersion:
+    label: previousVersion
+    type: rdf:Property
+    dcterms:description: The previous version of a resource in a lineage.
+  dcterms:issued:
+    label: issued
+    dcterms:description: Date of formal issuance of the resource.
+  dcterms:conformsTo:
+    label: conformsTo
+    dcterms:description: An established standard to which the described resource conforms.
+  dcterms:source:
+    label: source
+    dcterms:description: A related resource from which the described resource is derived.
+  dcterms:contributor:
+    label: contributor
+    dcterms:description: An entity responsible for making contributions to the resource.
+  dcterms:creator:
+    label: contributor
+    dcterms:description: An entity primarily responsible for making the resource.
+  dcterms:description:
+    label: description
+    range: xsd:string
+    dcterms:description: An account of the resource.
+  rdfs:comment:
+    label: comment
+    dcterms:description: A description of the subject resource.
+  rdfs:label:
+    label: label
+    dcterms:description: A human-readable name for the subject.
+  dcterms:language:
+    label: language
+    dcterms:description: A language of the resource.
+  dcterms:license:
+    label: license
+    dcterms:description: A legal document giving official permission to do something with the resource.
+  dcterms:publisher:
+    label: publisher
+    dcterms:description: An entity responsible for making the resource available.
+  dcterms:rightsHolder:
+    label: rightsHolder
+    dcterms:description: A person or organization owning or managing rights over the resource.
+  dcterms:rights:
+    label: rights
+    dcterms:description: Information about rights held in and over the resource.
+  prof:hasResource:
+    label: hasResource
+    domain: prof:Profile
+    dcterms:description: A resource which describes the nature of an artifact and the role it plays in relation to the profile.
+  adms:representationTechnique:
+    label: representationTechnique
+    range: skos:Concept
+    dcterms:description: More information about the format in which an asset distribution is released. This is different from the file format as, for example, a ZIP file (file format) could contain an XML schema (representation technique).
+  dcterms:format:
+    label: format
+    range: skos:Concept
+    dcterms:description: The file format, physical medium, or dimensions of the resource.
+  prof:hasArtifact:
+    label: hasArtifact
+    dcterms:description: The URL of a downloadable file with particulars such as its format and role indicated by the resource descriptor.
+  prof:hasRole:
+    label: hasRole
+    range: skos:Concept
+    dcterms:description: A description of a resource that defines an aspect - a particular part, feature or role - of a profile.

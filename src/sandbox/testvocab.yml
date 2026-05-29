@@ -1,0 +1,40 @@
+'@context':
+  sh: http://www.w3.org/ns/shacl#
+  adms: http://www.w3.org/ns/adms#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  cim: https://cim.ucaiug.io/ns#
+  cims: https://cim.ucaiug.io/schema-extensions#
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
+  id: '@id'
+  type: '@type'
+  '@vocab': http://www.w3.org/2000/01/rdf-schema#
+  terms:
+    '@id': cims:terms
+    '@container': '@type'
+  rdfs:Class:
+    '@container': '@id'
+  rdf:Property:
+    '@container': '@id'
+  description:
+    '@id': dcterms:description
+    '@type': '@id'
+
+terms:
+  rdfs:Class:
+    prof:Profile:
+      label: profile
+      description: Application Profile.
+    prof:ResourceDescriptor:
+      label: resource descriptor
+      description: Resource Descriptor.
+  rdf:Property:
+    dcat:version:
+      label: version
+      domain: prof:Profile

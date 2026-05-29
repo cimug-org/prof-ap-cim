@@ -1,0 +1,198 @@
+"@context": # https://cim.ucaiug.io/prof-ap-cim/3.0/meta/shacl/ctx.jsonld
+  sh: http://www.w3.org/ns/shacl#
+  adms: http://www.w3.org/ns/adms#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  cim: https://cim.ucaiug.io/ns#
+  cims: https://cim.ucaiug.io/schema-extensions#
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
+  id: '@id'
+  type: '@type'
+  '@vocab': http://www.w3.org/ns/shacl#
+  shapes:
+    '@id': cims:shapes
+    '@container': '@id'
+  property:
+    '@container': '@index'
+    '@index': path
+  in:
+    "@container": '@list'
+    "@type": "@id"
+  node:
+    '@type': '@id'
+  nodeKind:
+    '@type': '@id'
+  datatype:
+    '@type': '@id'
+  path:
+    '@type': '@id'
+  resourceOf:
+    '@reverse': prof:hasResource
+    '@type': '@id'
+
+id: https://ucaiug.io/prof-ap-cim/3.0/schema#
+type: owl:Ontology
+resourceOf: https://ucaiug.io/prof-ap-cim/3.0#
+dcat:conformsTo: http://www.w3.org/ns/shacl#
+dcterms:license: https://www.apache.org/licenses/LICENSE-2.0.txt
+
+shapes:
+  prof:Profile:
+    type: [sh:NodeShape, rdfs:Class]
+    name: Profile
+    property:
+      dcat:version:
+        name: version
+        datatype: xsd:string
+        minCount: 1
+        maxCount: 1
+      dcterms:title:
+        name: title
+        datatype: xsd:string
+        minCount: 1
+        maxCount: 1
+      dcat:isVersionOf:
+        name: isVersionOf
+        nodeKind: sh:IRI
+        minCount: 1
+        maxCount: 1
+      dcat:previousVersion:
+        name: previousVersion
+        nodeKind: sh:IRI
+        minCount: 0
+      dcterms:issued:
+        name: issued
+        datatype: xsd:dateTime
+        minCount: 1
+        maxCount: 1
+      dcterms:conformsTo:
+        name: conformsTo
+        nodeKind: sh:IRI
+        minCount: 1
+      dcterms:source:
+        name: source
+        datatype: xsd:string
+        minCount: 0
+      dcterms:contributor:
+        name: contributor
+        nodeKind: sh:IRI
+        minCount: 1
+      dcterms:creator:
+        name: contributor
+        nodeKind: sh:IRI
+        minCount: 1
+      dcterms:description:
+        name: description
+        datatype: xsd:string
+        minCount: 1
+        maxCount: 1
+      rdfs:comment:
+        name: comment
+        datatype: xsd:string
+        minCount: 0
+      rdfs:label:
+        name: label
+        datatype: xsd:string
+        minCount: 1
+        maxCount: 1
+      dcterms:language:
+        name: language
+        datatype: xsd:language
+        minCount: 0
+        maxCount: 1
+      dcterms:license:
+        name: license
+        nodeKind: sh:IRI
+        minCount: 0
+        maxCount: 1
+      dcterms:publisher:
+        name: publisher
+        datatype: xsd:string
+        minCount: 1
+        maxCount: 1
+      dcterms:rightsHolder:
+        name: rightsHolder
+        datatype: xsd:string
+        minCount: 0
+        maxCount: 1
+      dcterms:rights:
+        name: rights
+        datatype: xsd:string
+        minCount: 0
+        maxCount: 1
+      prof:hasResource:
+        name: hasResource
+        node: prof:ResourceDescriptor
+        minCount: 0
+
+  prof:ResourceDescriptor:
+    type: [sh:NodeShape, rdfs:Class]
+    name: ResourceDescriptor
+    property:
+      rdfs:label:
+        name: label
+        datatype: xsd:string
+        minCount: 1
+        maxCount: 1
+      dcterms:title:
+        name: title
+        datatype: xsd:string
+        minCount: 1
+        maxCount: 1
+      dcterms:conformsTo:
+        name: conformsTo
+        nodeKind: sh:IRI
+      dcterms:source:
+        name: source
+        datatype: xsd:string
+      dcterms:contributor:
+        name: contributor
+        nodeKind: sh:IRI
+        minCount: 1
+        maxCount: 1
+      adms:representationTechnique:
+        name: representationTechnique
+        node: cims:RepresentationTechnique
+        maxCount: 1
+      dcterms:format:
+        name: format
+        node: cims:RepresentationFormat
+        minCount: 1
+        maxCount: 1
+      prof:hasArtifact:
+        name: hasArtifact
+        nodeKind: sh:IRI
+        minCount: 1
+        maxCount: 1
+      prof:hasRole:
+        name: hasRole
+        node: cims:ResourceDescriptorRole
+        minCount: 1
+        maxCount: 1
+
+  cims:RepresentationTechnique:
+    type: sh:NodeShape
+    name: RepresentationTechnique
+    in: [cims:linkml, cims:rdfs, cims:shacl]
+
+  cims:RepresentationFormat:
+    type: sh:NodeShape
+    name: RepresentationFormat
+    in: [cims:yaml, cims:turtle, cims:pdf]
+
+  cims:ResourceDescriptorRole:
+    type: sh:NodeShape
+    name: RourceDescriptorRole
+    in:
+      - id: role:constraints
+        name: CONSTRAINTS
+      - id: role:vocabulary
+        name: VOCABULARY
+      - id: role:specification
+        name: SPECIFICATION
