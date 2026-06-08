@@ -93,48 +93,48 @@ publisher: https://www.ucaiug.org/
 rightsHolder: UCA International User Group
 rights: Copyright
 
-#hasResource:
-#  - id: https://cim.ucaiug.io/dcatcim/1.0#Vocabulary
-#    type: prof:ResourceDescriptor
-#    label: DCAT-CIM Constraints
-#    title: DCAT-CIM-Cons-v1-0-0
-#    contributor: mailto:bartkl@gmail.com
-#    description: Constraints for the Data Catalog Vocabulary (DCAT) with CIM extension profile described in SHACL.
-#    representationTechnique: cims:rdfs
-#    conformsTo: https://cim.ucaiug.io/prof/Constraints/1.0
-#    format: cims:turtle
-#    hasArtifact: https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl
-#    hasRole: role:constraints
-#
-#  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary
-#    label: Diagram Layout Vocabulary
-#    title: DiagramLayout-Voc-v2-1-0
-#    contributor: mailto:bartkl@gmail.com
-#    description: Vocabulary for the Diagram Layout profile described in RDFS-Plus.
-#    conformsTo: https://cim.ucaiug.io/prof/Vocabulary/1.0
-#    representationTechnique: cims:rdfs
-#    format: cims:turtle
-#    source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
-#    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
-#    hasRole: role:vocabulary
-#
-#  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints
-#    label: Diagram Layout Constraints
-#    title: DiagramLayout-Cons-v2-1-0
-#    contributor: mailto:bartkl@gmail.com
-#    description: Constraints for the Diagram Layout profile described in SHACL.
-#    conformsTo: https://cim.ucaiug.io/prof/Constraints/1.0
-#    representationTechnique: cims:rdfs
-#    format: cims:turtle
-#    source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
-#    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
-#    hasRole: role:constraints
-#
-#  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification
-#    title: DiagramLayout-Spec-v2-1-0
-#    label: Diagram Layout Specification
-#    contributor: mailto:bartkl@gmail.com
-#    description: Document describing the human readable specification of the Diagram Layout application profile.
-#    format: cims:pdf
-#    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf
-#    hasRole: role:specification
+hasResource:
+ - id: https://cim.ucaiug.io/dcatcim/1.0#Vocabulary
+   type: prof:ResourceDescriptor
+   label: DCAT-CIM Constraints
+   title: DCAT-CIM-Cons-v1-0-0
+   contributor: mailto:bartkl@gmail.com
+   description: Constraints for the Data Catalog Vocabulary (DCAT) with CIM extension profile described in SHACL.
+   representationTechnique: cims:rdfs
+   conformsTo: https://cim.ucaiug.io/prof/Constraints/1.0
+   format: cims:turtle
+   hasArtifact: https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl
+   hasRole: role:constraints
+
+ - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary
+   label: Diagram Layout Vocabulary
+   title: DiagramLayout-Voc-v2-1-0
+   contributor: mailto:bartkl@gmail.com
+   description: Vocabulary for the Diagram Layout profile described in RDFS-Plus.
+   conformsTo: https://cim.ucaiug.io/prof/Vocabulary/1.0
+   representationTechnique: cims:rdfs
+   format: cims:turtle
+   source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+   hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
+   hasRole: role:vocabulary
+
+ - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints
+   label: Diagram Layout Constraints
+   title: DiagramLayout-Cons-v2-1-0
+   contributor: mailto:bartkl@gmail.com
+   description: Constraints for the Diagram Layout profile described in SHACL.
+   conformsTo: https://cim.ucaiug.io/prof/Constraints/1.0
+   representationTechnique: cims:rdfs
+   format: cims:turtle
+   source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+   hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
+   hasRole: role:constraints
+
+ - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification
+   title: DiagramLayout-Spec-v2-1-0
+   label: Diagram Layout Specification
+   contributor: mailto:bartkl@gmail.com
+   description: Document describing the human readable specification of the Diagram Layout application profile.
+   format: cims:pdf
+   hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf
+   hasRole: role:specification
