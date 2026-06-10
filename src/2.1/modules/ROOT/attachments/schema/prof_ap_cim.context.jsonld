@@ -1,5 +1,5 @@
 {
-    "context": {
+    "@context": {
         "@base": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#",
         "id": "@id",
         "adms": "http://www.w3.org/ns/adms#",
