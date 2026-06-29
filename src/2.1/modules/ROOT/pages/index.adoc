@@ -6,21 +6,107 @@ include::partial$header.adoc[]
 
 == Introduction
 
-This is an application profile of PROF for defining CIM profiles.
+This is an <<dfn-application-profile,application profile>> for defining CIM profiles based on PROF and SHACL.
 
 == Conformance
 
-The following sections are normative with regards to complying to this specification:
+The following sections are normative in regard to complying to this specification:
 
 * <<_schema>>
 
 The key words _MUST_, _MUST NOT_, _REQUIRED_, _SHALL_, _SHALL NOT_, _SHOULD_, _SHOULD NOT_, _RECOMMENDED_, _MAY_, and _OPTIONAL_ in this document are to be interpreted as described in <<RFC2119>>.
 
-== Terminology
+// [glossary]
+// == Terminology
+//
+// [glossary]
+// [[dfn-application-profile]](application) profile:: A specification that constrains, extends, combines, or provides guidance for or explanation about the usage of other specifications for a particular application.
+// [[dfn-cim-profile]]CIM (application) profile:: An application profile of the canonical CIM which conforms to the PROF-AP-CIM specification.
 
-application profile:: A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.
+== Definition
+
+.Conceptual overview
+image::image-2026-06-29-12-20-45-683.png[]
+
+[[dfn-application-profile]](application) profile:: A specification that constrains, extends, combines, or provides guidance for or explanation about the usage of other specifications for a particular application.
+[[dfn-cim-profile]]CIM (application) profile:: An application profile of the canonical CIM which conforms to the PROF-AP-CIM specification.
+
+CIM profiles make use of PROF vocabulary to describe profile metadata, and of SHACL to describe the constraints put on
+vocabulary used from the CIM, extensions of the CIM or other vocabularies.
+
+=== Resources
+
+PROF-AP-CIM provides resources to help with the creation, validation and use of CIM profiles:
+
+SHACL:: enforces the desired structure of a CIM profile when serialized as RDF
+JSON Schema:: helps with authoring profiles in JSON/YAML (including LD) and allows validating
+non-RDF JSON/YAML
+OWL:: definition of additional PROF-AP-CIM vocabulary not part of PROF or SHACL
+JSON-LD context:: syntactic transformations allowing for the mapping between non-LD and LD JSON/YAML and more
+comfortable writing of JSON/YAML that is JSON-LD
+
+== Vocabulary
+
+[#shapesGraph]
+=== Class: sh:ShapesGraph
+[horizontal]
+URI:: http://www.w3.org/ns/shacl#ShapesGraph[`sh:ShapesGraph`]
+Is defined by:: https://www.w3.org/TR/shacl12-core/[SHACL 1.2 Core]
+Subclass of:: `owl:Ontology`
+
+A shapes graph is an RDF graph containing zero or more shapes that is passed into a SHACL validation process so
+that a data graph can be validated against the shapes.
+
+#TODO#: Are the membership properties required, i.e. will these be checked for in the SHACL?
+Or are these mere authoring supporting tools, in which case perhaps these should be part of <<_authoring>>?
+Furthermore: these do actually encode roles played by shapes, whereas the `@reverse` does not. This pain is felt
+when we want to infer types depending on whether something is a class or enum, but other than that, the information
+itself is already new regarldess of authoring.
+
+[#hasMember]
+=== Property: cimprof:hasMember
+[horizontal]
+URI:: https://cim.ucaiug.org/prof-ap-cim#hasMember[`cimprof:hasMember`]
+Domain:: `rdfs:Resource`
+Range:: `rdfs:Resource`
+Inverse of:: `rdfs:member`
+
+Indicates membership of a resource by a resource.
+
+[#hasClassShape]
+=== Property: cimprof:hasClassShape
+[horizontal]
+URI:: https://cim.ucaiug.org/prof-ap-cim#hasClassShape[`cimprof:hasClassShape`]
+Domain:: `sh:ShapesGraph`
+Range:: `sh:NodeShape, rdfs:Class`
+Subproperty of:: `cimprof:hasMember`
+
+Node shapes in the shapes graph which represent classes.
+
+NOTE: This leverages SHACL's implicit class targeting mechanism.
+
+[#hasEnumerationShape]
+=== Property: cimprof:hasEnumerationShape
+[horizontal]
+URI:: https://cim.ucaiug.org/prof-ap-cim#hasEnumerationShape[`cimprof:hasEnumerationShape`]
+Domain:: `sh:ShapesGraph`
+Range:: `sh:NodeShape`
+Subproperty of:: `cimprof:hasMember`
+
+Node shapes in the shapes graph which represent enumerations.
 
 == Schema
+
+Each CIM profile MUST have the shape described by the PROF-AP-CIM schema. When representing it in RDF, the SHACL schema
+can be used to validate it. For representations in YAML or JSON which are not utilizing JSON-LD, the JSON Schema can be
+used.
+
+#TODO#:
+
+SHACL should require:
+* OWL import of PROF-AP-CIM OWL metamodel.
+* correct type values for graph
+* optional inclusion of shapes
 
 .Schema
 [d2,svg,theme=1,width=40%]
@@ -36,10 +122,29 @@ include::partial$schema-namespaces.adoc[]
 
 include::partial$schema-classes.adoc[]
 
+== Authoring profiles in YAML
+
+.Supporting resources to write CIM Profile in RDF/YAML
+image::image-2026-06-29-12-58-13-925.png[]
+
+Using the PROF-AP-CIM JSON-LD context, one can write plain YAML
+
+=== Authoring
+
+
+
+
+=== Building
+
+
+
+
+
+
 [nonum]
 == Appendix A: Diagram Layout profile example
 
-Any RDF serialization will do for profile instances, but it is recommended to make us of the xref::attachment$schema/prof_ap_cim.context.jsonld[JSON-LD context,window=read-later]
+Any RDF serialization will do for profile instances, but it is recommended to make use of the xref::attachment$schema/prof_ap_cim.context.jsonld[JSON-LD context,window=read-later]
 and write using YAML.
 
 .Source code (YAML-LD)
