@@ -32,6 +32,8 @@
     '@type': '@id'
   path:
     '@type': '@id'
+  hasValue:
+    '@type': 'xsd:anyURI'
 
 id: https://ucaiug.io/prof-ap-cim/2.1
 type: owl:Ontology
@@ -51,6 +53,8 @@ shapes:
     dcterms:description: | 
       A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications. This definition includes what are sometimes called "`application profiles`", "`metadata application profiles`", or "`metadata profiles`".
     property:
+      owl:imports:
+        hasValue: https://modellen.netbeheernederland.nl/meta/nbnl-profile-dsl.owl.ttl
       dcat:version:
         rdfs:label: version
         datatype: xsd:string

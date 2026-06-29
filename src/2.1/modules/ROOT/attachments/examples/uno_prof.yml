@@ -1,0 +1,130 @@
+"@context":
+  "@version": 1.1
+  id: "@id"
+  type: "@type"
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  cim: https://cim.ucaiug.io/ns#
+  cims: https://cim.ucaiug.io/schema-extensions#
+  nl: https://cim.ucaiug.io/nl/ns#
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
+  sh: http://www.w3.org/ns/shacl#
+  "@vocab": http://www.w3.org/ns/shacl#  # NOTE: Enables use of `path` despite necessity to use `sh:path` due to indexing (somehow)
+  version:
+    '@id': dcat:version
+    '@type': xsd:string
+  versionOf:
+    "@id": dcat:versionOf
+    "@type": "@id"
+  profileOf:
+    "@id": prof:profileOf
+    "@type": "@id"
+  imports:
+    "@id": owl:imports
+    "@type": xsd:anyURI
+  classes:  # NOTE: For now, it's fine to introduce new vocabulary for this (optionally make it subproperty of the inverse of rdfs:member)
+    "@id": nl:hasClass
+    "@container": "@id"
+    # TODO: Meta should infer that classes have both type sh:NodeShape and rdfs:Class (implicit class targeting)
+    # "@index": sh:targetClass
+  enumerations:
+    "@id": nl:hasEnumeration
+    "@container": "@id"
+  sh:path:
+    # "@id": sh:path
+    "@type": "@id"
+  properties:
+    "@id": sh:property
+    "@container": "@index"
+    "@index": sh:path
+  datatype:
+    "@id": sh:datatype
+    "@type": "@id"
+  node:
+    "@id": sh:node
+    "@type": "@id"
+  closed:
+    "@id": sh:closed
+    "@type": xsd:boolean
+  nodeKind:
+    "@id": sh:nodeKind
+    "@type": "@id"
+  minCount:
+    "@id": sh:minCount
+    "@type": xsd:integer
+  maxCount:
+    "@id": sh:maxCount
+    "@type": xsd:integer
+  label:
+    "@id": rdfs:label
+    "@type": xsd:string
+  definition:
+    "@id": skos:definition
+    "@container": "@language"
+  values:
+    "@id": sh:in
+    "@type": "@id"
+    "@container": "@list"
+
+id: https://modellen.netbeheernederland.nl/nbnl-equipment/2.0
+versionOf: https://modellen.netbeheernederland.nl/nbnl-equipment
+profileOf: https://cim.ucaiug.io/ns#TC57CIM
+type: [prof:Profile, owl:Ontology]
+imports:
+  - https://modellen.netbeheernederland.nl/meta/nbnl-profile-dsl.owl.ttl  # TODO: SHACL must require this one
+  - https://modellen.netbeheernederland.nl/nbnl-equipment/2.0/vocabulary
+  - https://modellen.netbeheernederland.nl/nbnl-equipment/2.0/rules  # Advanced constraints (not necessarily class targeting, often SPARQL as well)
+  - https://modellen.netbeheernederland.nl/object-register/constraints.ttl
+
+classes:  # hasMember
+  cim:UsagePoint:
+    properties:
+      cim:UsagePoint.isVirtual:  # In LinkML you need to type even more... (pointing twice; label+uri)
+        datatype: xsd:boolean
+        minCount: 1
+        maxCount: 1  # TODO: exactCount: 1
+      cim:UsagePoint.Equipments:
+        # node: cim:EnergyConsumer  # TODO
+        nodeKind: sh:IRI  # Fake to simulate cut-off point from a referenced profile which targets these
+                          # TODO: But how? NOTE: Out of scope for formal stuff, but informative soap box would be helpful
+      nl:PowerSystemResource.UpdateInfo:  # Fake
+        class: nl:UpdateInfo
+
+  nl:UpdateInfo:
+    targetClass: nl:UpdateInfo
+    properties:
+      nl:UpdateInfo.date:
+        datatype: xsd:dateTime
+        minCount: 1
+        maxCount: 1
+      nl:UpdateInfo.type:
+        node: nl:UpdateInfoKind
+        minCount: 1
+        maxCount: 1
+
+enumerations:  # `nbnl:hasShape a rdf:Property; rdfs:range sh:NodeShape .`
+  cim:UnitMultiplier:
+    closed: true
+    values:
+      - cim:UnitMultiplier.G
+      - cim:UnitMultiplier.h
+      - cim:UnitMultiplier.k
+      - cim:UnitMultiplier.m
+      - cim:UnitMultiplier.M
+      - cim:UnitMultiplier.micro
+      - cim:UnitMultiplier.none
+  nl:UpdateInfoKind:
+    closed: true
+    values:
+      - nl:UpdateInfoKind.KI
+      - nl:UpdateInfoKind.ATC
+      - nl:UpdateInfoKind.BTC
+      - nl:UpdateInfoKind.WR
+      - nl:UpdateInfoKind.NU
+      - nl:UpdateInfoKind.CO
