@@ -1,0 +1,15 @@
+# TODO: Prefixes and ontology header .
+
+sh:ShapesGraph rdfs:subClassOf owl:Ontology .
+
+cimprof:hasMember owl:inverseOf rdfs:member .
+
+cimprof:hasClassShape a owl:ObjectProperty ;
+    rdfs:domain sh:ShapesGraph ;
+    rdfs:range sh:NodeShape , rdfs:Class ;
+    rdfs:subPropertyOf cimprof:hasMember .
+
+cimprof:hasEnumerationShape a owl:ObjectProperty ;
+    rdfs:domain sh:ShapesGraph ;
+    rdfs:range sh:NodeShape ;
+    rdfs:subPropertyOf cimprof:hasMember .

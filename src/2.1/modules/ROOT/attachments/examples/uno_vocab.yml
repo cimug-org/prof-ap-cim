@@ -1,0 +1,120 @@
+"@context":
+  "@version": 1.1
+  id: "@id"
+  type: "@type"
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  cim: https://cim.ucaiug.io/ns#
+  cims: https://cim.ucaiug.io/schema-extensions#
+  nl: https://cim.ucaiug.io/nl/ns#
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
+  sh: http://www.w3.org/ns/shacl#
+  '@vocab': http://www.w3.org/ns/shacl#  # NOTE: Enables use of `path` despite necessity to use `sh:path` due to indexing (somehow)
+  version:
+    '@id': dcat:version
+    '@type': xsd:string
+  versionOf:
+    "@id": dcat:versionOf
+    "@type": "@id"
+  profileOf:
+    "@id": prof:profileOf
+    "@type": "@id"
+  imports:
+    "@id": owl:imports
+    "@type": xsd:anyURI
+  classes:  # NOTE: For now, it's fine to introduce new vocabulary for this (optionally make it subproperty of the inverse of rdfs:member)
+    "@id": nl:hasClass
+    "@container": "@id"
+    # TODO: Meta should infer that classes have both type sh:NodeShape and rdfs:Class (implicit class targeting)
+    # "@index": sh:targetClass
+  enumerations:
+    "@id": nl:hasEnumeration
+    "@container": "@id"
+  sh:path:
+    # "@id": sh:path
+    "@type": "@id"
+  properties:
+    "@id": sh:property
+    "@container": "@index"
+    "@index": sh:path
+  datatype:
+    "@id": sh:datatype
+    "@type": "@id"
+  node:
+    "@id": sh:node
+    "@type": "@id"
+  closed:
+    "@id": sh:closed
+    "@type": xsd:boolean
+  nodeKind:
+    "@id": sh:nodeKind
+    "@type": "@id"
+  minCount:
+    "@id": sh:minCount
+    "@type": xsd:integer
+  maxCount:
+    "@id": sh:maxCount
+    "@type": xsd:integer
+  label:
+    "@id": rdfs:label
+    "@type": xsd:string
+  definition:
+    "@id": skos:definition
+    "@container": "@language"
+  values:
+    "@id": sh:in
+    "@type": "@id"
+    "@container": "@list"
+id: https://modellen.netbeheernederland.nl/nbnl-equipment/2.0/vocabulary
+type: owl:Ontology
+imports:
+  - https://modellen.netbeheernederland.nl/meta/nbnl-profile-vocab-dsl.owl.ttl
+  - https://modellen.netbeheernederland.nl/cim17-vocab.ttl
+  - https://modellen.netbeheernederland.nl/nbnl-term-cim-mapping.ttl  # SKOS mappings CIM <-> NBNL
+  - https://begrippen.netbeheernederland.nl/begrippenkader.ttl
+classes:  # `meta:hasClass a rdf:Property rdfs:range owl:Class .`
+  nl:UpdateInfo:
+    label: UpdateInfo
+    exactMatch: nbnl-term:1234  # Fake to prove point.
+    definition: Specific type of information that was updated for this dataset.
+    properties:
+      nl:UpdateInfo.date:
+        label: date
+        definition: Date of the update.
+      nl:UpdateInfo.type:
+        label:
+          nl: type
+          en: type
+        definition:
+          en: Type of the update.
+          nl: Type van de update.
+enumerations:  # `meta:hasEnumeration a rdf:Property; rdfs:range skos:ConceptScheme .`
+  nl:UpdateInfoKind:
+    type: skos:ConceptScheme
+    definition: Type of information that has been updated as part of this dataset.
+    values:  # `@reverse` of `skos:inScheme`
+      nl:UpdateInfoKind.KI:
+        definition: Kleurinformatie.
+        label: KI
+      nl:UpdateInfoKind.ATC:
+        label: ATC
+        definition: Aanwezige transportcapaciteit.
+        exactMatch: nbnl-term:aaaaa  # Fake.
+      nl:UpdateInfoKind.BTC:
+        label: BTC
+        definition: Benodigde transportcapaciteit.
+      nl:UpdateInfoKind.WR:
+        label: WR
+        definition: Wachtrij.
+      nl:UpdateInfoKind.NU:
+        label: NU
+        definition: Netuitbreidingen.
+      nl:UpdateInfoKind.CO:
+        definition: Congestie opgelost.
+        label: CO

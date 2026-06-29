@@ -2,7 +2,7 @@
 :sectnums:
 :page-spectype: Application Profile
 
-include::partial$header.adoc[]
+// include::partial$header.adoc[]
 
 == Introduction
 
@@ -122,6 +122,11 @@ include::partial$schema-namespaces.adoc[]
 
 include::partial$schema-classes.adoc[]
 
+== Versioning
+
+We borrow the https://www.w3.org/TR/vocab-dcat-3/#version-history[version chain and hierarchy] strategy from DCAT 3,
+which in our case translates to having one _abstract profile_, of which one or more versions exist.
+
 == Authoring profiles in YAML
 
 .Supporting resources to write CIM Profile in RDF/YAML
@@ -130,8 +135,6 @@ image::image-2026-06-29-12-58-13-925.png[]
 Using the PROF-AP-CIM JSON-LD context, one can write plain YAML
 
 === Authoring
-
-
 
 
 === Building
